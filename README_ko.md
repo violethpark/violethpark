@@ -73,9 +73,4 @@
 
 ---
 
-<details>
-<summary>📄 자세한 이력서 보기</summary>
-
-👉 [CV](https://about.violethpark.com/ko/)를 확인해 주세요!
-
-</details>
+👉 자세한 내용은 [CV 페이지](https://about.violethpark.com/ko/)를 확인해 주세요!

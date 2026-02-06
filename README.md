@@ -73,9 +73,4 @@
 
 ---
 
-<details>
-<summary>📄 View Full CV</summary>
-
-👉 Check out [CV](https://about.violethpark.com/) for details!
-
-</details>
+👉 Check out [CV pages](https://about.violethpark.com/) for details!

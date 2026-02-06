@@ -73,9 +73,4 @@
 
 ---
 
-<details>
-<summary>📄 詳しい履歴書を見る</summary>
-
-👉 [CV](https://about.violethpark.com/jp/)をご確認ください！
-
-</details>
+👉 詳細は [CV ページ](https://about.violethpark.com/jp/)をご確認ください！
