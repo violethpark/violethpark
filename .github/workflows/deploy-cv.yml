@@ -47,25 +47,32 @@ jobs:
       - name: Prepare deployment directory
         run: |
           mkdir -p _site/images
+          mkdir -p _site/en/images
           mkdir -p _site/ko/images
           mkdir -p _site/jp/images
 
           # Copy and rename CV*.html → index*.html
           cp CV.html    _site/index.html
+          cp CV.html    _site/en/index.html
           cp CV_ko.html _site/ko/index.html
           cp CV_jp.html _site/jp/index.html
 
           # Copy assets to root and subdirectories
           cp style.css _site/
+          cp style.css _site/en/
           cp style.css _site/ko/
           cp style.css _site/jp/
           cp -r images _site/images
+          cp -r images _site/en/images
           cp -r images _site/ko/images
           cp -r images _site/jp/images
 
           # Rewrite cross-language links (.md → clean URLs)
           sed -i 's|href="CV_ko\.md"|href="/ko/"|g' _site/index.html
           sed -i 's|href="CV_jp\.md"|href="/jp/"|g' _site/index.html
+
+          sed -i 's|href="CV_ko\.md"|href="/ko/"|g' _site/en/index.html
+          sed -i 's|href="CV_jp\.md"|href="/jp/"|g' _site/en/index.html
 
           sed -i 's|href="CV\.md"|href="/"|g'       _site/ko/index.html
           sed -i 's|href="CV_jp\.md"|href="/jp/"|g' _site/ko/index.html
