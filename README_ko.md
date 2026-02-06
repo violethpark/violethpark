@@ -5,7 +5,7 @@
 > 고객의 관점에서 생각하고, 신뢰할 수 있는 시스템을 개발하는 웹 개발자
 
 [![Email](https://img.shields.io/badge/Email-violethpark@outlook.com-0078D4?style=flat-square&logo=microsoftoutlook&logoColor=white)](mailto:violethpark@outlook.com)
-[![Blog](https://img.shields.io/badge/Blog-PHK%20Laboratory-FF5722?style=flat-square&logo=blogger&logoColor=white)](https://phk-laboratory.blogspot.com/)
+[![X](https://img.shields.io/badge/X-violethpark-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/violethpark)
 [![Facebook](https://img.shields.io/badge/Facebook-violethpark-1877F2?style=flat-square&logo=facebook&logoColor=white)](https://www.facebook.com/rpdladps)
 
 ---
