@@ -76,6 +76,6 @@
 <details>
 <summary>📄 詳しい履歴書を見る</summary>
 
-👉 [CV_jp.md](CV_jp.md)をご確認ください！
+👉 [CV](CV_jp.html)をご確認ください！
 
 </details>

@@ -1,6 +1,6 @@
 *[한국어](README_ko.md) | [日本語](README_jp.md)*
 
-# 👋 Hi, I'm Hyunggwan Park!
+# 👋 Hi, I'm Hyungkwan Park!
 
 > A web developer who thinks from the customer's perspective and builds reliable systems.
 
@@ -58,7 +58,7 @@
 
 ## 📂 Key Projects
 
-- **Korea Arts Welfare Foundation IS** — Java migration, security hardening, operational support
+- **Korea Arts Welfare Foundation Information System** — Java migration, security hardening, operational support
 - **AER (Vue.js)** — MSA/AWS backend design + Vue 3 frontend lead (19-member team)
 - **AER (React)** — Vue → React/Next.js migration
 - **GDC PoC** — First adoption of Vue.js 3 & TypeScript in the company
@@ -69,13 +69,13 @@
 ## 🎓 Education & Certification
 
 - **Yonsei University (Seoul)** — B.S. in Computer Science (2016)
-- **Engineer Information Processing** — HRDK (2015)
+- **Engineer Information Processing** — Human Resources Development Service of Korea (2015)
 
 ---
 
 <details>
 <summary>📄 View Full CV</summary>
 
-👉 Check out [CV.md](CV.md) for details!
+👉 Check out [CV](CV.html) for details!
 
 </details>

@@ -2,7 +2,7 @@
 
 *[English](CV.md) | [日本語](CV_jp.md)*
 
-# 박형관 | Hyunggwan Park
+# 박형관 | Hyungkwan Park
 
 > 고객의 관점에서 생각하고, 이해할 수 있는 아키텍처를 설계하며,
 > 신뢰할 수 있는 시스템을 개발하는 웹 개발자입니다.

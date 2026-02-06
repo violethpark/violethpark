@@ -39,6 +39,10 @@
   - **영어**로 작성한다.
   - CV.md의 내용을 **간략하게 요약**한다.
   - CV 형식에 부적합한 정보(희망연봉, 전화번호, 상세 주소 등)는 제거한다.
+  - **CV 링크 우선순위:** README*.md에서 CV로의 링크는 해당 언어의 `CV*.html` 파일이 존재하면 `.html`로, 존재하지 않으면 `.md`로 연결한다.
+    - 예: `CV.html` 존재 → `[CV](CV.html)`, 미존재 → `[CV.md](CV.md)`
+    - `README_ko.md` → `CV_ko.html` 또는 `CV_ko.md`
+    - `README_jp.md` → `CV_jp.html` 또는 `CV_jp.md`
   - Emoji, Badge (shields.io 등)를 활용하여 시각적으로 보기 좋게 구성한다.
   - 핵심 정보: 소개, 기술 스택 배지, 경력 요약, 링크
   - 너무 길지 않게, 스크롤 1~2회 이내로 끝나는 분량이 이상적이다.
@@ -65,6 +69,19 @@
   - 번역의 정확성을 위해 의역보다 직역을 우선하되, 자연스러운 표현을 사용한다.
   - RESUME*.md는 번역 대상이 아니다. 원본 언어(한국어)를 유지한다.
 
+### Task 6. CV*.html 생성 (HTML 변환)
+
+- **입력:** `CV.md`, `CV_ko.md`, `CV_jp.md`, `convert.ts`, `style.css`
+- **출력:** `CV.html`, `CV_ko.html`, `CV_jp.html`
+- **목표:** 모든 MD 파일 작업 완료 후 `convert.ts`를 실행하여 CV HTML 파일을 생성한다.
+- **실행 명령:** `npm run convert`
+- **주의사항:**
+  - **Task 1~5가 모두 완료된 후에 실행한다.**
+  - MD 파일이 수정될 때마다 재실행하여 HTML을 최신 상태로 유지한다.
+  - 변환 후 HTML 파일이 정상 생성되었는지 확인한다.
+  - `style.css`가 함께 존재해야 HTML이 올바르게 렌더링된다.
+  - `node_modules`가 없는 경우 `npm install`을 먼저 실행한다.
+
 ---
 
 ## 완료 조건
@@ -74,3 +91,4 @@
 - [x] README.md 생성 완료 (영어, GitHub 프로필용, 간결 & 시각적)
 - [x] CV.md 이미지/자료 추가 완료 (사용자 확인 후)
 - [x] 다국어 버전 생성 완료 (CV_ko.md, CV_jp.md, README_ko.md, README_jp.md)
+- [x] CV*.html 생성 완료 (convert.ts 실행, CV.html, CV_ko.html, CV_jp.html)

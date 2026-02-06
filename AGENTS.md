@@ -22,6 +22,11 @@ violethpark/
 ├── CV.md              # CV (영어, 기본)
 ├── CV_ko.md           # CV (한국어)
 ├── CV_jp.md           # CV (일본어)
+├── CV*.html           # CV HTML 변환 결과 (convert.ts로 생성)
+├── style.css          # CV HTML용 스타일시트
+├── convert.ts         # CV*.md → CV*.html 변환 스크립트
+├── package.json       # Node.js 프로젝트 설정
+├── tsconfig.json      # TypeScript 설정
 └── images/            # 이미지 자료
 ```
 
@@ -103,6 +108,8 @@ violethpark/
 - CV.md를 기반으로 GitHub 프로필 페이지에 적합한 포맷으로 작성한다.
 - **기본 언어: 영어**로 작성한다.
 - CV 형식에 부적합한 정보(희망연봉, 전화번호, 상세 주소 등)는 제거한다.
+- **CV 링크 우선순위:** README*.md에서 CV로의 링크는 해당 언어의 `CV*.html` 파일이 존재하면 `.html`로, 존재하지 않으면 `.md`로 연결한다.
+  - 예: `CV.html` 존재 시 → `[CV](CV.html)`, 미존재 시 → `[CV.md](CV.md)`
 - 활용 요소:
   - Emoji (👋, 🛠️, 💼, 🎓 등)
   - shields.io 배지 (기술 스택, 연락처 등)
@@ -133,6 +140,15 @@ violethpark/
 - 각 문서 상단에 다른 언어 버전으로의 링크를 상호 연결한다.
 - 번역 시 기술 용어, 고유명사는 원어(영어)를 유지한다.
 - 번역의 정확성을 위해 의역보다 직역을 우선하되, 자연스러운 표현을 사용한다.
+
+### Task 6: CV*.html 생성 (HTML 변환)
+
+- 모든 MD 파일 작업(Task 1~5)이 완료된 후, `convert.ts`를 실행하여 `CV*.md` → `CV*.html` 변환을 수행한다.
+- 실행 명령: `npm run convert`
+- 변환 대상: `CV.md`, `CV_ko.md`, `CV_jp.md` → `CV.html`, `CV_ko.html`, `CV_jp.html`
+- 변환 후 HTML 파일이 정상 생성되었는지 확인한다.
+- `style.css`가 함께 존재해야 HTML이 올바르게 렌더링된다.
+- **이 Task는 항상 마지막에 실행한다.** MD 파일이 수정될 때마다 재실행하여 HTML을 최신 상태로 유지한다.
 
 ---
 

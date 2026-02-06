@@ -1,0 +1,71 @@
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #f5f5f5;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.08);
+  padding: 3rem 3.5rem;
+}
+
+/* Typography */
+h1 { font-size: 2rem; margin-bottom: .4rem; color: #111; }
+h2 { font-size: 1.4rem; margin-top: 2rem; margin-bottom: .8rem; color: #222;
+     border-bottom: 2px solid #e2e2e2; padding-bottom: .3rem; }
+h3 { font-size: 1.15rem; margin-top: 1.4rem; margin-bottom: .5rem; color: #333; }
+p  { margin-bottom: .8rem; }
+
+blockquote {
+  border-left: 4px solid #0969da;
+  padding: .6rem 1rem;
+  margin: 1rem 0;
+  color: #555;
+  background: #f0f6ff;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Links */
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: .8rem 0; }
+th, td { text-align: left; padding: .5rem .8rem; border-bottom: 1px solid #eee; }
+th { background: #fafafa; font-weight: 600; }
+
+/* Lists */
+ul, ol { margin: .5rem 0 .8rem 1.5rem; }
+li { margin-bottom: .3rem; }
+
+/* Horizontal rules */
+hr { border: none; border-top: 1px solid #e2e2e2; margin: 1.8rem 0; }
+
+/* Images */
+img { max-width: 100%; height: auto; border-radius: 4px; margin: .5rem 0; }
+
+/* Code */
+code { background: #f0f0f0; padding: .15rem .4rem; border-radius: 3px;
+       font-size: .9em; font-family: "SFMono-Regular", Consolas, monospace; }
+pre { background: #f6f8fa; padding: 1rem; border-radius: 6px;
+      overflow-x: auto; margin: .8rem 0; }
+pre code { background: none; padding: 0; }
+
+/* Strong */
+strong { font-weight: 600; }
+
+/* Print */
+@media print {
+  body { background: #fff; padding: 0; }
+  .container { box-shadow: none; padding: 0; max-width: none; }
+}

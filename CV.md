@@ -2,7 +2,7 @@
 
 *[한국어](CV_ko.md) | [日本語](CV_jp.md)*
 
-# Hyunggwan Park (박형관)
+# Hyungkwan Park (박형관)
 
 > A web developer who thinks from the customer's perspective, designs comprehensible architecture, and builds reliable systems.
 
@@ -50,7 +50,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 - Secure coding, privacy compliance assessment, web vulnerability response
 - Production deployment, maintenance, and feature development based on client requirements
 
-### Pentaworks — SCP Lab (HQ R&D) · Researcher
+### Pentaworks — SCP Lab (Headquarters R&D) · Researcher
 
 **May 2022 – Nov 2023** (1 year 7 months) | Full-Stack Developer
 
@@ -139,7 +139,7 @@ Republic of Korea Army, Sergeant, Honorable Discharge (May 2013 – Feb 2015)
 
 ## 💡 About Me
 
-I'm Hyunggwan Park, a web developer driven by curiosity and a passion for problem-solving. I find fulfillment in overcoming challenges and joy in continuous learning. Through diverse projects, I've built expertise in both frontend and backend development, and I value teamwork to create better outcomes. I thrive on new challenges and growth, always striving to deliver better services.
+I'm Hyungkwan Park, a web developer driven by curiosity and a passion for problem-solving. I find fulfillment in overcoming challenges and joy in continuous learning. Through diverse projects, I've built expertise in both frontend and backend development, and I value teamwork to create better outcomes. I thrive on new challenges and growth, always striving to deliver better services.
 
 ---
 
