@@ -82,6 +82,18 @@
   - `style.css`가 함께 존재해야 HTML이 올바르게 렌더링된다.
   - `node_modules`가 없는 경우 `npm install`을 먼저 실행한다.
 
+### Task 7. GitHub Pages 배포 (GitHub Actions)
+
+- **입력:** `CV*.html`, `style.css`, `images/`
+- **출력:** GitHub Pages (`https://violethpark.github.io/violethpark/`)
+- **목표:** CV*.html을 index*.html 형식으로 GitHub Pages에 자동 배포
+- **워크플로우:** `.github/workflows/deploy-cv.yml`
+- **주의사항:**
+  - `main` 브랜치에 push 시 자동 실행된다.
+  - CV.html → index.html, CV_ko.html → index_ko.html, CV_jp.html → index_jp.html로 복사한다.
+  - 언어 간 교차 링크(.md)를 index*.html로 자동 변환한다.
+  - GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
+
 ---
 
 ## 완료 조건
@@ -92,3 +104,4 @@
 - [x] CV.md 이미지/자료 추가 완료 (사용자 확인 후)
 - [x] 다국어 버전 생성 완료 (CV_ko.md, CV_jp.md, README_ko.md, README_jp.md)
 - [x] CV*.html 생성 완료 (convert.ts 실행, CV.html, CV_ko.html, CV_jp.html)
+- [x] GitHub Pages 배포 설정 완료 (GitHub Actions 워크플로우)

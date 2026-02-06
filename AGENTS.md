@@ -150,6 +150,18 @@ violethpark/
 - `style.css`가 함께 존재해야 HTML이 올바르게 렌더링된다.
 - **이 Task는 항상 마지막에 실행한다.** MD 파일이 수정될 때마다 재실행하여 HTML을 최신 상태로 유지한다.
 
+### Task 7: GitHub Pages 배포 (GitHub Actions)
+
+- `main` 브랜치에 push 시 `.github/workflows/deploy-cv.yml` 워크플로우가 자동 실행된다.
+- CV*.html을 index*.html로 복사하여 GitHub Pages에 배포한다.
+  - `CV.html` → `index.html`
+  - `CV_ko.html` → `index_ko.html`
+  - `CV_jp.html` → `index_jp.html`
+- 언어 간 교차 링크(`.md`)를 `index*.html`로 자동 변환한다.
+- `style.css`와 `images/` 폴더도 함께 배포한다.
+- GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
+- 배포 URL: `https://violethpark.github.io/violethpark/`
+
 ---
 
 ## 코드/파일 작성 규칙
