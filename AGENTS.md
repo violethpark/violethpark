@@ -108,8 +108,9 @@ violethpark/
 - CV.md를 기반으로 GitHub 프로필 페이지에 적합한 포맷으로 작성한다.
 - **기본 언어: 영어**로 작성한다.
 - CV 형식에 부적합한 정보(희망연봉, 전화번호, 상세 주소 등)는 제거한다.
-- **CV 링크 우선순위:** README*.md에서 CV로의 링크는 해당 언어의 `CV*.html` 파일이 존재하면 `.html`로, 존재하지 않으면 `.md`로 연결한다.
-  - 예: `CV.html` 존재 시 → `[CV](CV.html)`, 미존재 시 → `[CV.md](CV.md)`
+- **CV 링크:** README*.md에서 CV로의 링크는 `https://about.violethpark.com/` 으로 연결한다.
+  - 한국어: `https://about.violethpark.com/ko/`
+  - 일본어: `https://about.violethpark.com/jp/`
 - 활용 요소:
   - Emoji (👋, 🛠️, 💼, 🎓 등)
   - shields.io 배지 (기술 스택, 연락처 등)
@@ -161,6 +162,7 @@ violethpark/
 - `style.css`와 `images/` 폴더도 함께 배포한다.
 - GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
 - 배포 URL: `https://violethpark.github.io/violethpark/`
+- 커스텀 도메인 URL: `https://about.violethpark.com/`
 
 ---
 

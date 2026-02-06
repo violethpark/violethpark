@@ -39,10 +39,9 @@
   - **영어**로 작성한다.
   - CV.md의 내용을 **간략하게 요약**한다.
   - CV 형식에 부적합한 정보(희망연봉, 전화번호, 상세 주소 등)는 제거한다.
-  - **CV 링크 우선순위:** README*.md에서 CV로의 링크는 해당 언어의 `CV*.html` 파일이 존재하면 `.html`로, 존재하지 않으면 `.md`로 연결한다.
-    - 예: `CV.html` 존재 → `[CV](CV.html)`, 미존재 → `[CV.md](CV.md)`
-    - `README_ko.md` → `CV_ko.html` 또는 `CV_ko.md`
-    - `README_jp.md` → `CV_jp.html` 또는 `CV_jp.md`
+  - **CV 링크:** [about.violethpark.com](https://about.violethpark.com/) 으로 연결한다.
+    - 한국어: [about.violethpark.com/ko/](https://about.violethpark.com/ko/)
+    - 일본어: [about.violethpark.com/jp/](https://about.violethpark.com/jp/)
   - Emoji, Badge (shields.io 등)를 활용하여 시각적으로 보기 좋게 구성한다.
   - 핵심 정보: 소개, 기술 스택 배지, 경력 요약, 링크
   - 너무 길지 않게, 스크롤 1~2회 이내로 끝나는 분량이 이상적이다.
