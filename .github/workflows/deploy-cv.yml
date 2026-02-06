@@ -62,10 +62,10 @@ jobs:
           cp style.css _site/en/
           cp style.css _site/ko/
           cp style.css _site/jp/
-          cp -r images _site/images
-          cp -r images _site/en/images
-          cp -r images _site/ko/images
-          cp -r images _site/jp/images
+          cp -r images/* _site/images/
+          cp -r images/* _site/en/images/
+          cp -r images/* _site/ko/images/
+          cp -r images/* _site/jp/images/
 
           # Rewrite cross-language links (.md → clean URLs)
           sed -i 's|href="CV_ko\.md"|href="/ko/"|g' _site/index.html
