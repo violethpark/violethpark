@@ -69,3 +69,36 @@ strong { font-weight: 600; }
   body { background: #fff; padding: 0; }
   .container { box-shadow: none; padding: 0; max-width: none; }
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  body { padding: 1rem 0.5rem; }
+  .container { padding: 2rem 1.5rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.2rem; }
+
+  /* Profile photo: stack above content on smaller screens */
+  img[align="right"] {
+    float: none !important;
+    display: block;
+    margin: 0 auto 1rem;
+  }
+
+  /* Prevent tables from overflowing */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* Responsive — Mobile */
+@media (max-width: 480px) {
+  body { padding: 0.5rem 0.25rem; }
+  .container { padding: 1.5rem 1rem; border-radius: 0; }
+  h1 { font-size: 1.35rem; }
+  h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+  h3 { font-size: 1.05rem; }
+
+  /* Stack table cells vertically if needed */
+  th, td { padding: .4rem .5rem; font-size: .9rem; }
+
+  /* Personality test images: full width */
+  img { width: 100%; height: auto; }
+}
