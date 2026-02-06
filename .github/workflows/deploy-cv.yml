@@ -47,8 +47,8 @@ jobs:
       - name: Prepare deployment directory
         run: |
           mkdir -p _site/images
-          mkdir -p _site/ko
-          mkdir -p _site/jp
+          mkdir -p _site/ko/images
+          mkdir -p _site/jp/images
 
           # Copy and rename CV*.html → index*.html
           cp CV.html    _site/index.html
