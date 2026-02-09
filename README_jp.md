@@ -6,7 +6,6 @@
 
 [![Email](https://img.shields.io/badge/Email-violethpark@outlook.com-0078D4?style=flat-square&logo=microsoftoutlook&logoColor=white)](mailto:violethpark@outlook.com)
 [![X](https://img.shields.io/badge/X-violethpark-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/violethpark)
-[![Facebook](https://img.shields.io/badge/Facebook-violethpark-1877F2?style=flat-square&logo=facebook&logoColor=white)](https://www.facebook.com/rpdladps)
 
 ---
 

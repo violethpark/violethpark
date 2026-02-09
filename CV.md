@@ -15,7 +15,6 @@
 | Email | violethpark@outlook.com |
 | GitHub | [github.com/violethpark](https://github.com/violethpark) |
 | X (Twitter) | [x.com/violethpark](https://x.com/violethpark) |
-| Facebook | [facebook.com/violethpark](https://www.facebook.com/rpdladps) |
 
 ---
 
