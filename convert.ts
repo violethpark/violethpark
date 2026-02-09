@@ -11,9 +11,9 @@ const CSS_FILE = "style.css";
 
 // ─── HTML Template ───────────────────────────────────────────────
 
-function htmlTemplate(title: string, body: string): string {
+function htmlTemplate(title: string, body: string, lang: string): string {
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${lang}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,6 +36,12 @@ function escapeHtml(str: string): string {
     .replace(/"/g, "&quot;");
 }
 
+function getLangCode(filename: string): string {
+  if (filename.includes("_ko")) return "ko";
+  if (filename.includes("_jp")) return "ja";
+  return "en";
+}
+
 // ─── Conversion Logic ────────────────────────────────────────────
 
 async function findCvFiles(dir: string): Promise<string[]> {
@@ -52,8 +58,9 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
   const body = await marked.parse(markdown);
 
   const title = extractTitle(markdown) ?? basename(srcPath, extname(srcPath));
+  const lang = getLangCode(basename(srcPath));
 
-  const html = htmlTemplate(title, body);
+  const html = htmlTemplate(title, body, lang);
   await writeFile(outPath, html, "utf-8");
 }
 
