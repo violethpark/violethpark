@@ -109,18 +109,24 @@
 
 ### Task 7. GitHub Pages 배포 (GitHub Actions)
 
-- **입력:** `CV*.html`, `style.css`, `images/`
-- **출력:** GitHub Pages (`https://violethpark.github.io/violethpark/`)
-- **목표:** CV*.html을 index*.html 형식으로 GitHub Pages에 자동 배포
-- **워크플로우:** `.github/workflows/deploy-cv.yml`
+- **입력:** `CV*.md`, `convert.ts`, `style.css`, `images/`
+  (`CV*.html`은 워크플로가 직접 만든다)
+- **출력:** GitHub Pages (`https://about.violethpark.com/`)
+- **목표:** CV*.md를 HTML로 변환해 언어별 경로(`/`, `/en/`, `/ko/`, `/jp/`)로
+  GitHub Pages에 자동 배포
+- **워크플로우:** `.github/workflows/deploy-cv.yml` (감시 경로와 배포 단계의 정본)
 - **주의사항:**
-  - `main` 브랜치에 push 시 자동 실행된다.
-  - CV.html → index.html, CV_ko.html → index_ko.html, CV_jp.html → index_jp.html로 복사한다.
-  - 언어 간 교차 링크(.md)를 index*.html로 자동 변환한다.
-  - `style.css`와 `images/` 폴더도 함께 배포한다.
+  - `main` 브랜치 push에서 감시 경로(`CV*.md`, `style.css`, `convert.ts`,
+    `images/**`, `package.json`, 워크플로 파일)가 바뀌면 자동 실행된다.
+    Actions 화면에서 수동 실행(`workflow_dispatch`)도 할 수 있다.
+  - `npm ci`, `npm run convert`로 CV*.html을 만든 뒤 CV.html →
+    `/index.html`과 `/en/index.html`, CV_ko.html → `/ko/index.html`,
+    CV_jp.html → `/jp/index.html`로 복사한다.
+  - 언어 간 교차 링크(`CV*.md`)를 `/en/`, `/ko/`, `/jp/`로 바꿔 쓴다.
+  - `style.css`와 `images/`를 각 경로에 함께 배포한다.
   - GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
-  - 배포 URL: `https://violethpark.github.io/violethpark/`
-  - 커스텀 도메인 URL: `https://about.violethpark.com/`
+  - 커스텀 도메인: `about.violethpark.com` (워크플로가 `CNAME`을 쓴다).
+    `https://violethpark.github.io/violethpark/`는 이 도메인으로 리디렉션된다.
 
 ---
 
