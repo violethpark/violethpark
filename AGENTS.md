@@ -11,23 +11,29 @@ RESUME*.md(원본 이력서 파일들)를 기반으로 CV.md와 README.md를 생
 
 ## 디렉토리 구조
 
-```
+파일 간 관계와 발행 흐름은 [ARCHITECTURE.md](ARCHITECTURE.md)를 참조한다.
+
+```text
 violethpark/
 ├── AGENTS.md          # AI 에이전트 지침 (이 파일)
+├── ARCHITECTURE.md    # 저장소 발행 구조 (그림 + 파일 역할)
 ├── TASK.md            # 작업 순서 및 요구사항 정의
-├── RESUME*.md         # 원본 이력서 (외부 사이트에서 변환, 한국어, 복수 파일 가능)
+├── RESUME*.md         # 원본 이력서 (외부 사이트에서 변환, 한국어, 복수 파일 가능, 로컬 전용·gitignore)
 ├── README.md          # GitHub 프로필 페이지 (영어, 기본)
 ├── README_ko.md       # GitHub 프로필 페이지 (한국어)
 ├── README_jp.md       # GitHub 프로필 페이지 (일본어)
 ├── CV.md              # CV (영어, 기본)
 ├── CV_ko.md           # CV (한국어)
 ├── CV_jp.md           # CV (일본어)
-├── CV*.html           # CV HTML 변환 결과 (convert.ts로 생성)
+├── CV*.html           # CV HTML 변환 결과 (convert.ts로 생성, 로컬 전용·gitignore)
 ├── style.css          # CV HTML용 스타일시트
 ├── convert.ts         # CV*.md → CV*.html 변환 스크립트
 ├── package.json       # Node.js 프로젝트 설정
 ├── tsconfig.json      # TypeScript 설정
-└── images/            # 이미지 자료
+├── images/            # 이미지 자료
+├── diagrams/          # ARCHITECTURE.md 그림 (.mmd, .drawio, .drawio.svg)
+└── .github/workflows/
+    └── deploy-cv.yml  # CV를 GitHub Pages(about.violethpark.com)에 배포
 ```
 
 ---
