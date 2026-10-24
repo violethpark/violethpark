@@ -1,0 +1,29 @@
+# ARCHITECTURE.md — 저장소 구조
+
+GitHub 프로필 페이지와 CV 사이트(about.violethpark.com)가 어떤 파일에서 어떻게 만들어지는지 정리한다.
+작업 순서는 [TASK.md](TASK.md), 작업 규칙은 [AGENTS.md](AGENTS.md)를 따른다.
+
+![저장소 발행 구조](diagrams/repo-structure.drawio.svg)
+
+[draw.io](diagrams/repo-structure.drawio) · [Mermaid](diagrams/repo-structure.mmd)
+
+## 파일 역할
+
+| 파일 | 역할 | 결과물 / 노출 위치 |
+| --- | --- | --- |
+| `RESUME*.md` | 원본 이력서(한국어). gitignore 대상이라 로컬에만 있다 | `CV.md`의 사실 근거 |
+| [CV.md](CV.md), [CV_ko.md](CV_ko.md), [CV_jp.md](CV_jp.md) | CV 원문(영어 기본, 한국어, 일본어) | `CV*.html`, CV 사이트 |
+| [README.md](README.md), [README_ko.md](README_ko.md), [README_jp.md](README_jp.md) | CV 요약 프로필 | github.com/violethpark (`README.md`). 사이트에는 들어가지 않는다 |
+| [convert.ts](convert.ts) | `CV*.md`를 marked로 `CV*.html`로 변환(`npm run convert`) | `CV*.html` |
+| [style.css](style.css), [images/](images/) | CV HTML의 스타일과 이미지 | 사이트에 복사된다 |
+| [deploy-cv.yml](.github/workflows/deploy-cv.yml) | main push(감시 경로) 또는 수동 실행 시 변환해 GitHub Pages에 배포 | about.violethpark.com `/`, `/en/`, `/ko/`, `/jp/` |
+| `CV*.html` | 변환 결과. gitignore 대상이라 커밋하지 않는다 | 로컬 확인용 |
+| [diagrams/](diagrams/) | 이 문서의 그림 | — |
+
+감시 경로와 배포 단계는 [deploy-cv.yml](.github/workflows/deploy-cv.yml)이 정본이다.
+`ARCHITECTURE.md`와 `diagrams/`는 감시 경로에 없어서 고쳐도 배포가 실행되지 않는다.
+
+## 그림 갱신
+
+- `.mmd`는 구조, `.drawio`는 모양의 정본이고, `.drawio.svg`는 `.drawio`에서 내보낸 결과다.
+- 발행 흐름이 바뀌면 같은 PR에서 `.mmd`, `.drawio`, `.drawio.svg`와 이 문서의 표를 함께 고친다.
