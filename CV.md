@@ -81,7 +81,7 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 
 - Built the Go backend, RAG pipeline, and answer-quality evaluation (RAGAS) in a monorepo, then split it into app, backend, and infrastructure repositories
 - Built the user web app, operator admin site, and design system; set up blue/green ECS deployment with GitHub Actions
-- Moved the AWS stacks to the Seoul region and run them with multi-AZ availability
+- Moved the AWS stacks to the Seoul region, now running with multi-AZ availability
 
 ### 2. Korea Arts Welfare Foundation — Information System Maintenance
 
