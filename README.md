@@ -2,7 +2,7 @@
 
 # 👋 Hi, I'm Hyungkwan Park!
 
-> A web developer who thinks from the customer's perspective and builds reliable systems.
+> A full-stack software engineer who thinks from the customer's perspective and builds reliable systems.
 
 [![Email](https://img.shields.io/badge/Email-violethpark@outlook.com-0078D4?style=flat-square&logo=microsoftoutlook&logoColor=white)](mailto:violethpark@outlook.com)
 [![X](https://img.shields.io/badge/X-violethpark-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/violethpark)
@@ -18,6 +18,9 @@
 ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=spring&logoColor=white)
 ![MyBatis](https://img.shields.io/badge/MyBatis-000000?style=flat-square&logo=mybatis&logoColor=white)
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
 **Frontend**
 
@@ -35,10 +38,14 @@
 
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
 **Cloud & DevOps**
 
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white)
+![Pulumi](https://img.shields.io/badge/Pulumi-8A3391?style=flat-square&logo=pulumi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![GitLab](https://img.shields.io/badge/GitLab-FC6D26?style=flat-square&logo=gitlab&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
@@ -50,13 +57,15 @@
 
 | Period | Company | Role |
 |--------|---------|------|
-| Jun 2024 – Present | **Hypertech** SW Engineering | Korea Arts Welfare Foundation System Maintenance · Owner of 4 systems |
+| Mar 2026 – Present | **INMED DATA** Technology Division | Metriever (medical AI search & chat) · Full-stack + AWS |
+| Jun 2024 – Mar 2026 | **Hypertech** SW Engineering | Korea Arts Welfare Foundation System Maintenance · Owner of 4 systems |
 | May 2022 – Nov 2023 | **Pentaworks** SCP Lab | Emerging Tech PoC · Frontend Lead · Full-Stack Development |
 
 ---
 
 ## 📂 Key Projects
 
+- **Metriever** — Medical literature AI search & chat: Go backend, Next.js app & design system, AWS with Pulumi
 - **Korea Arts Welfare Foundation Information System** — Java migration, security hardening, operational support
 - **AER (Vue.js)** — MSA/AWS backend design + Vue 3 frontend lead (19-member team)
 - **AER (React)** — Vue → React/Next.js migration

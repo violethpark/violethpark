@@ -5,7 +5,7 @@
 # 박형관 | Hyungkwan Park
 
 > 고객의 관점에서 생각하고, 이해할 수 있는 아키텍처를 설계하며,
-> 신뢰할 수 있는 시스템을 개발하는 웹 개발자입니다.
+> 신뢰할 수 있는 시스템을 개발하는 풀스택 소프트웨어 엔지니어입니다.
 
 ---
 
@@ -23,27 +23,40 @@
 
 ### Backend
 
-Java · Spring Boot · Spring Framework · MyBatis · JSP · Maven · Apache Tomcat · Apache Web Server · 전자정부프레임워크
+Java · Spring Boot · Spring Framework · MyBatis · JSP · Maven · Apache Tomcat · Apache Web Server · 전자정부프레임워크 · Go · Kotlin · Python
 
 ### Frontend
 
-TypeScript · JavaScript · Vue.js 3 · Vuetify · React · Next.js · HTML5 · CSS3 · Bootstrap · Sass · jQuery
+TypeScript · JavaScript · Vue.js 3 · Vuetify · React · Next.js · HTML5 · CSS3 · Bootstrap · Sass · jQuery · pnpm · Playwright · Vitest
 
 ### Database
 
-Oracle DB · MySQL
+Oracle DB · MySQL · PostgreSQL · pgvector
+
+### AI / RAG
+
+OpenAI API · LlamaIndex · Pinecone · RAGAS
 
 ### Cloud & DevOps
 
-AWS (S3) · Vite · Git · GitLab · Node.js
+AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · GitLab · Node.js
 
 ---
 
 ## 💼 경력
 
+### 인메드데이터 (INMED DATA) — 기술본부 · 매니저
+
+**2026.03 ~ 현재** | 풀스택 개발자
+
+- 근거문헌 기반 의료정보 AI 검색·채팅 서비스 Metriever(RAG) 개발
+- 백엔드: Go API 서버와 RAG 채팅 엔진, RAGAS 답변 품질 평가
+- 프론트엔드: Next.js/React 앱, 디자인 시스템, CSS/React UI 컴포넌트
+- 인프라: Pulumi로 AWS(ECS, RDS, EC2, ALB) 구성·운영, GitHub Actions CI/CD
+
 ### 하이퍼테크 — SW공학부 · 주임
 
-**2024.06 ~ 현재** | 유지보수 개발자
+**2024.06 ~ 2026.03** | 유지보수 개발자
 
 - 한국예술인복지재단 정보시스템 통합유지관리 프로젝트 담당
 - 4개 시스템 담당자(정): 예술인경력정보시스템, 권리보장시스템, 산재보험, 예술인패스
@@ -63,16 +76,24 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 
 ## 📂 주요 프로젝트
 
-### 1. 한국예술인복지재단 정보시스템 통합유지관리
+### 1. Metriever — 의료 문헌 AI 검색·채팅 서비스
 
-**2024.07 ~ 현재** | Java, Oracle DB, 전자정부프레임워크, JSP, jQuery
+**2026.03 ~ 현재** | Go, PostgreSQL/pgvector, Next.js, React, TypeScript, AWS, Pulumi
+
+- 백엔드 Kotlin → Go 마이그레이션, RAG 엔진 고도화, Next.js/React 코드 현대화
+- 사용자 웹 앱, 운영자 관리 사이트, 디자인 시스템 개발과 CI/CD 구축
+- AWS를 IaC로 운영하고, 높은 SLA의 고가용성(HA) 시스템 구축·운영
+
+### 2. 한국예술인복지재단 정보시스템 통합유지관리
+
+**2024.07 ~ 2026.03** | Java, Oracle DB, 전자정부프레임워크, JSP, jQuery
 
 - Java 1.7 → 1.8 마이그레이션
 - 아이핀 본인인증 추가 및 1인 1계정 정책 적용
 - 회원별 DB 오류 교정, 약관 동의이력 관리 개발
 - 예술인국민연금보험료지원 · 산재보험지원 사업 대응
 
-### 2. 사내 프로젝트 AER — Vue (프론트엔드 리딩)
+### 3. 사내 프로젝트 AER — Vue (프론트엔드 리딩)
 
 **2022.10 ~ 2023.10** (약 1년) | Spring Boot, Vue.js 3, Vuetify, TypeScript, MySQL, AWS
 
@@ -82,7 +103,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 - 외부 인력 포함 프론트엔드 7명 협업 경험
 - 기획 QA → 설계 → 개발 → QA 통합 테스트까지 전 과정 참여
 
-### 3. 사내 프로젝트 AER — React (프론트엔드 리딩)
+### 4. 사내 프로젝트 AER — React (프론트엔드 리딩)
 
 **2023.10 ~ 2023.11** (약 2개월) | React, Next.js, JavaScript
 
@@ -90,7 +111,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 - 서비스 기획 의도를 고려한 Next.js 프레임워크 도입
 - 소스 구조 및 개발 패턴 제안, 교육 전파
 
-### 4. 사내 프로젝트 GDC (PoC)
+### 5. 사내 프로젝트 GDC (PoC)
 
 **2022.06 ~ 2022.08** (약 2개월) | Vue.js 3, TypeScript, Vite, Bootstrap
 
@@ -99,7 +120,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 - Axios 종속 API 호출 코드를 라이브러리 비종속 구현으로 리팩터링
 - 이후 AER 프로젝트의 기반이 됨
 
-### 5. 사내 백오피스 프레임워크 마이그레이션
+### 6. 사내 백오피스 프레임워크 마이그레이션
 
 **2022** | Vue.js 2.5 → 2.7, Vite, Node.js 18
 
@@ -139,7 +160,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 
 ## 💡 자기소개
 
-웹 개발에 흥미를 느끼는 개발자 박형관입니다. 문제 해결에서 성취감을, 배움에서 즐거움을 느낍니다. 다양한 프로젝트를 통해 프론트엔드와 백엔드 양쪽의 역량을 키워왔으며, 협업을 통해 더 나은 결과물을 만들기 위해 노력합니다. 새로운 도전과 성장을 즐기며, 더 나은 서비스를 제공하고자 하는 마음가짐으로 일하고 있습니다.
+개발에 흥미를 느끼는 풀스택 소프트웨어 엔지니어 박형관입니다. 문제 해결에서 성취감을, 배움에서 즐거움을 느낍니다. 다양한 프로젝트를 통해 프론트엔드와 백엔드 양쪽의 역량을 키워왔으며, 협업을 통해 더 나은 결과물을 만들기 위해 노력합니다. 새로운 도전과 성장을 즐기며, 더 나은 서비스를 제공하고자 하는 마음가짐으로 일하고 있습니다.
 
 ---
 

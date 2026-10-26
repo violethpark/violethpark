@@ -5,7 +5,7 @@
 # パク・ヒョングァン (박형관) | Hyungkwan Park
 
 > お客様の視点で考え、理解しやすいアーキテクチャを設計し、
-> 信頼性の高いシステムを開発するウェブ開発者です。
+> 信頼性の高いシステムを開発するフルスタックソフトウェアエンジニアです。
 
 ---
 
@@ -23,27 +23,40 @@
 
 ### Backend
 
-Java · Spring Boot · Spring Framework · MyBatis · JSP · Maven · Apache Tomcat · Apache Web Server · eGovFramework
+Java · Spring Boot · Spring Framework · MyBatis · JSP · Maven · Apache Tomcat · Apache Web Server · eGovFramework · Go · Kotlin · Python
 
 ### Frontend
 
-TypeScript · JavaScript · Vue.js 3 · Vuetify · React · Next.js · HTML5 · CSS3 · Bootstrap · Sass · jQuery
+TypeScript · JavaScript · Vue.js 3 · Vuetify · React · Next.js · HTML5 · CSS3 · Bootstrap · Sass · jQuery · pnpm · Playwright · Vitest
 
 ### Database
 
-Oracle DB · MySQL
+Oracle DB · MySQL · PostgreSQL · pgvector
+
+### AI / RAG
+
+OpenAI API · LlamaIndex · Pinecone · RAGAS
 
 ### Cloud & DevOps
 
-AWS (S3) · Vite · Git · GitLab · Node.js
+AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · GitLab · Node.js
 
 ---
 
 ## 💼 職歴
 
+### INMED DATA — 技術本部 · マネージャー
+
+**2026年3月 ~ 現在** | フルスタック開発者
+
+- エビデンス文献に基づく医療情報AI検索・チャットサービス Metriever（RAG）の開発
+- バックエンド：Go APIサーバーとRAGチャットエンジン、RAGASによる回答品質評価
+- フロントエンド：Next.js/Reactアプリ、デザインシステム、CSS/React UIコンポーネント
+- インフラ：PulumiによるAWS（ECS、RDS、EC2、ALB）の構築・運用、GitHub ActionsによるCI/CD
+
 ### Hypertech — SW工学部 · 主任
 
-**2024年6月 ~ 現在** | 保守開発者
+**2024年6月 ~ 2026年3月** | 保守開発者
 
 - 韓国芸術人福祉財団 情報システム統合維持管理プロジェクト担当
 - 4システムの主担当者：芸術人経歴情報システム、権利保障システム、労災保険、芸術人パス
@@ -63,16 +76,24 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 
 ## 📂 主要プロジェクト
 
-### 1. 韓国芸術人福祉財団 — 情報システム統合維持管理
+### 1. Metriever — 医療文献AI検索・チャットサービス
 
-**2024年7月 ~ 現在** | Java, Oracle DB, eGovFramework, JSP, jQuery
+**2026年3月 ~ 現在** | Go, PostgreSQL/pgvector, Next.js, React, TypeScript, AWS, Pulumi
+
+- バックエンドのKotlin → Goマイグレーション、RAGエンジンの高度化、Next.js/Reactコードのモダナイゼーション
+- ユーザー向けWebアプリ、運営者管理サイト、デザインシステムの開発とCI/CDの構築
+- AWSをIaCで運用し、高SLAの高可用性（HA）システムを構築・運用
+
+### 2. 韓国芸術人福祉財団 — 情報システム統合維持管理
+
+**2024年7月 ~ 2026年3月** | Java, Oracle DB, eGovFramework, JSP, jQuery
 
 - Java 1.7 → 1.8 マイグレーション
 - i-PIN本人認証追加および1人1アカウントポリシー適用
 - 会員別DBエラー修正、利用規約同意履歴管理の開発
 - 国民年金保険料支援・労災保険支援事業対応
 
-### 2. 社内プロジェクト AER — Vue（フロントエンドリード）
+### 3. 社内プロジェクト AER — Vue（フロントエンドリード）
 
 **2022年10月 ~ 2023年10月**（約1年）| Spring Boot, Vue.js 3, Vuetify, TypeScript, MySQL, AWS
 
@@ -82,7 +103,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 - 外部人材を含むフロントエンド7名との協業経験
 - 企画QA → 設計 → 開発 → QA統合テストまで全工程に参加
 
-### 3. 社内プロジェクト AER — React（フロントエンドリード）
+### 4. 社内プロジェクト AER — React（フロントエンドリード）
 
 **2023年10月 ~ 2023年11月**（約2ヶ月）| React, Next.js, JavaScript
 
@@ -90,14 +111,14 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 - サービス企画意図を考慮したNext.jsフレームワーク導入
 - ソース構造および開発パターン提案、チーム教育
 
-### 4. 社内プロジェクト GDC（PoC）
+### 5. 社内プロジェクト GDC（PoC）
 
 **2022年6月 ~ 2022年8月**（約2ヶ月）| Vue.js 3, TypeScript, Vite, Bootstrap
 
 - 開発者2名でPoCを迅速に実装
 - Vue.js 3、TypeScript社内初導入- Axios依存のAPI呼び出しコードをライブラリ非依存の実装にリファクタリング- その後のAERプロジェクトの基盤となる
 
-### 5. 社内バックオフィスフレームワークマイグレーション
+### 6. 社内バックオフィスフレームワークマイグレーション
 
 **2022年** | Vue.js 2.5 → 2.7, Vite, Node.js 18
 
@@ -137,7 +158,7 @@ AWS (S3) · Vite · Git · GitLab · Node.js
 
 ## 💡 自己紹介
 
-ウェブ開発に興味を持つ開発者、パク・ヒョングァンです。問題解決に達成感を、学びに喜びを感じます。多様なプロジェクトを通じてフロントエンドとバックエンド両方のスキルを磨いてきました。チームワークを通じてより良い成果物を作ることに努めています。新しい挑戦と成長を楽しみ、より良いサービスを提供したいという気持ちで仕事をしています。
+開発に興味を持つフルスタックソフトウェアエンジニア、パク・ヒョングァンです。問題解決に達成感を、学びに喜びを感じます。多様なプロジェクトを通じてフロントエンドとバックエンド両方のスキルを磨いてきました。チームワークを通じてより良い成果物を作ることに努めています。新しい挑戦と成長を楽しみ、より良いサービスを提供したいという気持ちで仕事をしています。
 
 ---
 
