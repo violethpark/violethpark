@@ -99,7 +99,7 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 - MSA/AWS-based backend API design and DB design for membership module (ERD, UML, specifications)
 - Lead frontend developer — architecture design and team leadership
 - Built frontend from scratch using Vue.js 3, Vuetify, TypeScript, Pinia, Vite
-- Collaboration with a 7-member frontend team including external partners
+- Collaboration in a 7-member project team (4 on frontend, including me)
 - End-to-end participation: planning QA → design → development → QA integration testing
 
 ### 4. In-house Project AER — React (Frontend Lead)

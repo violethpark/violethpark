@@ -100,7 +100,7 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 - MSA/AWS 기반 백엔드 회원 부문 API 설계 및 DB 설계 (ERD, UML, 명세서)
 - 프론트엔드 메인 개발자로서 아키텍처 설계 및 팀 리딩
 - Vue.js 3, Vuetify, TypeScript, Pinia, Vite를 사용하여 프론트엔드를 처음부터 구축
-- 외부 인력 포함 프론트엔드 7명 협업 경험
+- 프로젝트 팀 7명 협업 경험 (프론트엔드는 본인 포함 4명)
 - 기획 QA → 설계 → 개발 → QA 통합 테스트까지 전 과정 참여
 
 ### 4. 사내 프로젝트 AER — React (프론트엔드 리딩)
