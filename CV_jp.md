@@ -50,8 +50,8 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 **2026年3月 ~ 現在** | フルスタック開発者
 
 - エビデンス文献に基づく医療情報AI検索・チャットサービス Metriever（RAG）の開発
-- バックエンド：Go APIサーバーとRAGチャットエンジン（pgvector検索、引用付き回答のSSEストリーミング）、PubMed・ガイドラインのデータパイプライン、RAGASによる回答品質評価
-- フロントエンド：Next.js/Reactユーザー向けWebアプリ、運営者管理サイト、共通デザインシステム、利用ガイドサイト
+- バックエンド：Go APIサーバーとRAGチャットエンジン、RAGASによる回答品質評価
+- フロントエンド：Next.js/Reactアプリ、デザインシステム、CSS/React UIコンポーネント
 - インフラ：PulumiによるAWS（ECS、RDS、EC2、ALB）の構築・運用、GitHub ActionsによるCI/CD
 
 ### Hypertech — SW工学部 · 主任
@@ -80,9 +80,9 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 
 **2026年3月 ~ 現在** | Go, PostgreSQL/pgvector, Next.js, React, TypeScript, AWS, Pulumi
 
-- モノレポでGoバックエンド、RAGパイプライン、回答品質評価（RAGAS）を構築し、その後アプリ・バックエンド・インフラのリポジトリに分割
-- ユーザー向けWebアプリ、運営者管理サイト、デザインシステムの開発と、GitHub ActionsによるECS blue/greenデプロイの構築
-- AWSスタックをソウルリージョンへ移行し、マルチAZ構成で運用
+- バックエンドをKotlinからGoへマイグレーション
+- ユーザー向けWebアプリ、運営者管理サイト、デザインシステムの開発とCI/CDの構築
+- AWSをIaCで運用し、高SLAの高可用性（HA）システムを構築・運用
 
 ### 2. 韓国芸術人福祉財団 — 情報システム統合維持管理
 

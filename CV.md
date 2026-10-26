@@ -49,8 +49,8 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 **Mar 2026 – Present** | Full-Stack Developer
 
 - Developing Metriever, an evidence-based medical literature AI search & chat service (RAG)
-- Backend: Go API server and RAG chat engine (pgvector retrieval, cited answers streamed over SSE), PubMed and guideline data pipelines, RAGAS answer-quality evaluation
-- Frontend: Next.js/React user app, operator admin site, shared design system, and user-guide site
+- Backend: Go API server, RAG chat engine, and RAGAS answer-quality evaluation
+- Frontend: Next.js/React app, design system, and CSS/React UI components
 - Infrastructure: AWS (ECS, RDS, EC2, ALB) as code with Pulumi, CI/CD with GitHub Actions
 
 ### Hypertech — SW Engineering Division · Assistant Manager
@@ -79,9 +79,9 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 
 **Mar 2026 – Present** | Go, PostgreSQL/pgvector, Next.js, React, TypeScript, AWS, Pulumi
 
-- Built the Go backend, RAG pipeline, and answer-quality evaluation (RAGAS) in a monorepo, then split it into app, backend, and infrastructure repositories
-- Built the user web app, operator admin site, and design system; set up blue/green ECS deployment with GitHub Actions
-- Moved the AWS stacks to the Seoul region, now running with multi-AZ availability
+- Migrated the backend from Kotlin to Go
+- Built the user web app, operator admin site, and design system; set up CI/CD
+- Run AWS as infrastructure as code (IaC); built and operate a high-availability (HA) system with a high SLA
 
 ### 2. Korea Arts Welfare Foundation — Information System Maintenance
 
