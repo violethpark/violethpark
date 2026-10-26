@@ -80,7 +80,7 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 
 **2026.03 ~ 현재** | Go, PostgreSQL/pgvector, Next.js, React, TypeScript, AWS, Pulumi
 
-- 백엔드를 Kotlin에서 Go로 마이그레이션
+- 백엔드 Kotlin → Go 마이그레이션, RAG 엔진 고도화, Next.js/React 코드 현대화
 - 사용자 웹 앱, 운영자 관리 사이트, 디자인 시스템 개발과 CI/CD 구축
 - AWS를 IaC로 운영하고, 높은 SLA의 고가용성(HA) 시스템 구축·운영
 

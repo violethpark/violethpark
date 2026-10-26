@@ -79,7 +79,7 @@ AWS (ECS, RDS, EC2, S3) · Pulumi · Docker · GitHub Actions · Vite · Git · 
 
 **Mar 2026 – Present** | Go, PostgreSQL/pgvector, Next.js, React, TypeScript, AWS, Pulumi
 
-- Migrated the backend from Kotlin to Go
+- Migrated the backend from Kotlin to Go, enhanced the RAG engine, and modernized the Next.js/React codebase
 - Built the user web app, operator admin site, and design system; set up CI/CD
 - Run AWS as infrastructure as code (IaC); built and operate a high-availability (HA) system with a high SLA
 
