@@ -67,7 +67,7 @@
 
 - **Metriever** — 医療文献AI検索・チャット：Goバックエンド、Next.jsアプリ・デザインシステム、PulumiによるAWS
 - **韓国芸術人福祉財団 情報システム** — Javaマイグレーション、セキュリティ強化、事業対応開発
-- **AER (Vue.js)** — MSA/AWSバックエンド設計 + Vue 3フロントエンドリード（チーム規模19名）
+- **AER (Vue.js)** — MSA/AWSバックエンド設計 + Vue 3フロントエンドリード（チーム7名、フロントエンド4名）
 - **AER (React)** — Vue → React/Next.jsマイグレーション実施
 - **GDC PoC** — Vue.js 3 · TypeScript社内初導入
 - **バックオフィスマイグレーション** — vue-cli → Vite、ビルド時間10倍以上短縮

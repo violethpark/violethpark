@@ -67,7 +67,7 @@
 
 - **Metriever** — Medical literature AI search & chat: Go backend, Next.js app & design system, AWS with Pulumi
 - **Korea Arts Welfare Foundation Information System** — Java migration, security hardening, operational support
-- **AER (Vue.js)** — MSA/AWS backend design + Vue 3 frontend lead (19-member team)
+- **AER (Vue.js)** — MSA/AWS backend design + Vue 3 frontend lead (7-member team, 4 on frontend)
 - **AER (React)** — Vue → React/Next.js migration
 - **GDC PoC** — First adoption of Vue.js 3 & TypeScript in the company
 - **Backoffice Migration** — vue-cli → Vite, 10x+ build time improvement
