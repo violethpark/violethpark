@@ -23,7 +23,7 @@
 
 ### Backend
 
-Java · Spring Boot · Spring Framework · MyBatis · JSP · Maven · Apache Tomcat · Apache Web Server · eGovFramework · Go · Python
+Java · Spring Boot · Spring Framework · MyBatis · JSP · Maven · Apache Tomcat · Apache Web Server · eGovFramework · Go · Kotlin · Python
 
 ### Frontend
 
