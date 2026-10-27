@@ -32,7 +32,9 @@ interface Ui {
   languages: string;
 }
 
-const UI: Record<string, Ui> = {
+type Lang = "en" | "ko" | "ja";
+
+const UI: Record<Lang, Ui> = {
   en: {
     contents: "Contents",
     close: "Close",
@@ -98,14 +100,14 @@ interface Link {
 
 interface Page {
   title: string;
-  lang: string;
+  lang: Lang;
   body: string;
   sections: Section[];
   languages: Link[];
 }
 
 function htmlTemplate(page: Page): string {
-  const ui = UI[page.lang] ?? UI.en!;
+  const ui = UI[page.lang];
   const title = escapeHtml(page.title);
   // The page script labels and shows it; without the script the system
   // theme applies and the button stays hidden.
@@ -234,7 +236,7 @@ function escapeHtml(str: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function getLangCode(filename: string): string {
+function getLangCode(filename: string): Lang {
   if (filename.includes("_ko")) return "ko";
   if (filename.includes("_jp")) return "ja";
   return "en";
@@ -296,7 +298,7 @@ async function findCvFiles(dir: string): Promise<string[]> {
 async function convertFile(srcPath: string, outPath: string): Promise<void> {
   const markdown = await readFile(srcPath, "utf-8");
   const lang = getLangCode(basename(srcPath));
-  const ui = UI[lang] ?? UI.en!;
+  const ui = UI[lang];
 
   const marked = new Marked();
   const tokens = marked.lexer(markdown);
