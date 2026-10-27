@@ -1,9 +1,9 @@
 name: Check
 
 # Type checks, lint, and format of the build scripts and their settings:
-# TypeScript (convert.ts, page.ts, build-site.ts) and subset-fonts.py. The
-# runner's python3 (3.12 on ubuntu-24.04) is the version pyrightconfig.json
-# and ruff.toml target.
+# TypeScript (convert.ts, page.ts, build-site.ts) and subset-fonts.py, then a
+# build of the site. The runner's python3 (3.12 on ubuntu-24.04) is the
+# version pyrightconfig.json and ruff.toml target.
 on:
   pull_request:
   push:
@@ -59,3 +59,10 @@ jobs:
 
       - name: Ruff format
         run: .venv-fonts/bin/ruff format --check
+
+      # The site itself, so a break in convert.ts, build-site.ts, or
+      # subset-fonts.py shows here and not only in deploy-cv.yml after a merge.
+      - name: Build the site
+        run: |
+          npm run convert
+          PYTHON="$PWD/.venv-fonts/bin/python" npm run build-site -- "$RUNNER_TEMP/site"
