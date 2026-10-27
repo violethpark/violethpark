@@ -30,6 +30,8 @@ violethpark/
 ├── convert.ts         # CV*.md → CV*.html 변환 스크립트 (node로 직접 실행)
 ├── page.ts            # CV HTML에 인라인하는 브라우저 스크립트 (테마, 현재 절)
 ├── build-site.sh      # CV*.html로 배포용 _site/ 구성
+├── subset-fonts.py    # 본문 글꼴을 사이트 글자로 서브셋 (build-site.sh가 실행)
+├── requirements-fonts.txt # subset-fonts.py의 fontTools·brotli (해시 고정)
 ├── fonts/             # 웹폰트 woff2·LICENSE, 고정 목록 fonts.json
 ├── package.json       # Node.js 프로젝트 설정
 ├── tsconfig.json      # TypeScript 설정

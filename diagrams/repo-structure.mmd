@@ -1,6 +1,6 @@
 flowchart TB
   accTitle: Repository publishing structure
-  accDescr: RESUME*.md is the factual source for the CV in three languages, which the README profiles summarize. convert.ts, with the page script page.ts, turns CV*.md into CV*.html locally and in the deploy workflow; the workflow adds style.css, fonts, and images with build-site.sh and deploys the site to GitHub Pages at about.violethpark.com.
+  accDescr: RESUME*.md is the factual source for the CV in three languages, which the README profiles summarize. convert.ts, with the page script page.ts, turns CV*.md into CV*.html locally and in the deploy workflow; the workflow adds style.css, images, and the fonts cut to the pages' characters (subset-fonts.py) with build-site.sh and deploys the site to GitHub Pages at about.violethpark.com.
   subgraph local ["Local only (gitignored)"]
     html["CV*.html<br/>local build"]
     resume["RESUME*.md<br/>source resume, Korean"]
@@ -8,7 +8,7 @@ flowchart TB
   subgraph repo [Repository]
     cv["CV*.md<br/>CV: en, ko, jp"]
     readme["README*.md<br/>profile: en, ko, jp"]
-    assets["style.css, fonts/<br/>images/"]
+    assets["style.css, images/<br/>fonts/, subset-fonts.py"]
     convert["convert.ts, page.ts<br/>marked, CV*.md to CV*.html"]
     workflow["deploy-cv.yml<br/>.github/workflows/"]
   end
@@ -22,7 +22,7 @@ flowchart TB
   readme -- "README.md shown" --> profile
   cv --> convert
   convert -- "npm run convert" --> html
-  assets -- copied --> run
+  assets -- "copied, fonts cut" --> run
   convert -- "npm run convert" --> run
   workflow -- "push to main, watched paths" --> run
   run -- deploy --> pages
