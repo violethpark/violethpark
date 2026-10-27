@@ -48,5 +48,12 @@ for dir in . en ko jp; do
 done
 
 "${PYTHON:-python3}" subset-fonts.py "$site"
+# The site's style sheet names the cuts; the one next to CV*.html keeps the
+# originals for npm run convert's pages.
+sed -i 's|fonts/ibm-plex-sans/IBMPlexSans|fonts/cv-sans/CVSans|g' "$site/style.css"
+if grep -q 'ibm-plex-sans' "$site/style.css"; then
+  echo "build-site.sh: $site/style.css still names a Plex original" >&2
+  exit 1
+fi
 
 echo "about.violethpark.com" >"$site/CNAME"

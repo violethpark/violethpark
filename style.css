@@ -11,12 +11,14 @@
 
    Text is IBM Plex Sans: its Latin cut first, then the KR cut for Hangul
    (the same Latin, but few accented letters); under lang="ja" the JP cut,
-   whose Latin is drawn larger to match kana. The site serves them cut to
-   its characters (subset-fonts.py), and as Plex is a Reserved Font Name
-   the cuts are CV Sans. Code is Sarasa Mono Slab K, J under lang="ja",
-   without ligatures. Each face tries the installed font first, then the
-   file in fonts/ next to this file, which build-site.sh lays out. A
-   Regular face's full name is its family name. */
+   whose Latin is drawn larger to match kana. Their faces are named CV
+   Sans: the site serves the cuts to its characters, and as Plex is a
+   Reserved Font Name the cuts carry that name. Here the url()s name the
+   originals, for the CV*.html that npm run convert writes next to this
+   file; build-site.sh points the site's copy at the cuts it makes with
+   subset-fonts.py. Code is Sarasa Mono Slab K, J under lang="ja", without
+   ligatures. Each face tries the installed font first, then the file in
+   fonts/. A Regular face's full name is its family name. */
 @font-face {
   font-family: "CV Sans";
   font-weight: 400;
@@ -24,7 +26,7 @@
   src:
     local("IBM Plex Sans"),
     local("IBMPlexSans"),
-    url("fonts/cv-sans/CVSans-Regular.woff2") format("woff2");
+    url("fonts/ibm-plex-sans/IBMPlexSans-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "CV Sans";
@@ -33,7 +35,7 @@
   src:
     local("IBM Plex Sans Bold"),
     local("IBMPlexSans-Bold"),
-    url("fonts/cv-sans/CVSans-Bold.woff2") format("woff2");
+    url("fonts/ibm-plex-sans/IBMPlexSans-Bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "CV Sans KR";
@@ -42,7 +44,7 @@
   src:
     local("IBM Plex Sans KR"),
     local("IBMPlexSansKR"),
-    url("fonts/cv-sans/CVSansKR-Regular.woff2") format("woff2");
+    url("fonts/ibm-plex-sans/IBMPlexSansKR-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "CV Sans KR";
@@ -51,7 +53,7 @@
   src:
     local("IBM Plex Sans KR Bold"),
     local("IBMPlexSansKR-Bold"),
-    url("fonts/cv-sans/CVSansKR-Bold.woff2") format("woff2");
+    url("fonts/ibm-plex-sans/IBMPlexSansKR-Bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "CV Sans JP";
@@ -60,7 +62,7 @@
   src:
     local("IBM Plex Sans JP"),
     local("IBMPlexSansJP"),
-    url("fonts/cv-sans/CVSansJP-Regular.woff2") format("woff2");
+    url("fonts/ibm-plex-sans/IBMPlexSansJP-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "CV Sans JP";
@@ -69,7 +71,7 @@
   src:
     local("IBM Plex Sans JP Bold"),
     local("IBMPlexSansJP-Bold"),
-    url("fonts/cv-sans/CVSansJP-Bold.woff2") format("woff2");
+    url("fonts/ibm-plex-sans/IBMPlexSansJP-Bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Sarasa Mono Slab K";
