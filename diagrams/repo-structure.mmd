@@ -1,4 +1,6 @@
 flowchart TB
+  accTitle: Repository publishing structure
+  accDescr: RESUME*.md is the factual source for the CV in three languages, which the README profiles summarize. convert.ts, with the page script page.ts, turns CV*.md into CV*.html locally and in the deploy workflow; the workflow adds style.css, fonts, and images with build-site.sh and deploys the site to GitHub Pages at about.violethpark.com.
   subgraph local ["Local only (gitignored)"]
     html["CV*.html<br/>local build"]
     resume["RESUME*.md<br/>source resume, Korean"]
@@ -6,12 +8,12 @@ flowchart TB
   subgraph repo [Repository]
     cv["CV*.md<br/>CV: en, ko, jp"]
     readme["README*.md<br/>profile: en, ko, jp"]
-    assets["style.css<br/>images/"]
-    convert["convert.ts<br/>marked, CV*.md to CV*.html"]
+    assets["style.css, fonts/<br/>images/"]
+    convert["convert.ts, page.ts<br/>marked, CV*.md to CV*.html"]
     workflow["deploy-cv.yml<br/>.github/workflows/"]
   end
   subgraph github [GitHub]
-    run["Actions run (deploy-cv.yml)<br/>npm ci, npm run convert, copy to _site/"]
+    run["Actions run (deploy-cv.yml)<br/>npm ci, typecheck, npm run convert, build-site.sh to _site/"]
     profile["GitHub profile<br/>github.com/violethpark"]
     pages["GitHub Pages<br/>about.violethpark.com<br/>/, /en/, /ko/, /jp/"]
   end

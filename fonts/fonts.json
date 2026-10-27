@@ -1,0 +1,88 @@
+{
+  "archives": [
+    {
+      "url": "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans%401.1.0/ibm-plex-sans.zip",
+      "sha256": "fb365d910566e6d199cc2c15579a7dd9a267128e18431a394ed81f1970c69200",
+      "files": {
+        "ibm-plex-sans/IBMPlexSans-Regular.woff2": {
+          "from": "ibm-plex-sans/fonts/complete/woff2/IBMPlexSans-Regular.woff2",
+          "sha256": "ba711a3085ff9f27440b6b9c4550cfc47c97bf36591d5da958b975bb3add8c1a"
+        },
+        "ibm-plex-sans/IBMPlexSans-Bold.woff2": {
+          "from": "ibm-plex-sans/fonts/complete/woff2/IBMPlexSans-Bold.woff2",
+          "sha256": "fa7130d854a660b39a7fc9e6e0f2dc23dba5f1346e2adea3e1fe37b6d884133d"
+        }
+      }
+    },
+    {
+      "url": "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-kr%401.1.0/ibm-plex-sans-kr.zip",
+      "sha256": "9837800c8e5aedf4123775e1d767afa482c983321bd2fc606c985f405d24562e",
+      "files": {
+        "ibm-plex-sans/IBMPlexSansKR-Regular.woff2": {
+          "from": "ibm-plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Regular.woff2",
+          "sha256": "055a35664c3c3965161c92292504c5633ba9604ec904edc1ed799bf2a436276d"
+        },
+        "ibm-plex-sans/IBMPlexSansKR-Bold.woff2": {
+          "from": "ibm-plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Bold.woff2",
+          "sha256": "cf874a368dc2c2c0e4d1933c35611b849e48942023bfdd1fa11128475dbc4860"
+        },
+        "ibm-plex-sans/LICENSE.txt": {
+          "from": "ibm-plex-sans-kr/LICENSE.txt",
+          "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+        }
+      }
+    },
+    {
+      "url": "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-jp%403.0.0/ibm-plex-sans-jp.zip",
+      "sha256": "4c14c41552934b0bc92fc216a76b36bdc78f745dfbeed1115f9b8bc405ee314f",
+      "files": {
+        "ibm-plex-sans/IBMPlexSansJP-Regular.woff2": {
+          "from": "ibm-plex-sans-jp/fonts/complete/woff2/hinted/IBMPlexSansJP-Regular.woff2",
+          "sha256": "ec27e9b75cd90a6f7abe96ede49d00b151eb5b1c2c886bfe9b4fc845f40be1ff"
+        },
+        "ibm-plex-sans/IBMPlexSansJP-Bold.woff2": {
+          "from": "ibm-plex-sans-jp/fonts/complete/woff2/hinted/IBMPlexSansJP-Bold.woff2",
+          "sha256": "38336fbb169ae1b7b6ca2539332e1d59c9be222227659d23f8eb70ecda60337d"
+        }
+      }
+    },
+    {
+      "url": "https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.43/SarasaMonoSlabK-TTF-1.0.43.7z",
+      "sha256": "1dcbbf2fcabdcd0f03afde6a8100b53cebe99ceac4ab1b2754590270a99ab2fb",
+      "files": {
+        "sarasa-mono-slab/SarasaMonoSlabK-Regular.woff2": {
+          "from": "SarasaMonoSlabK-Regular.ttf",
+          "sha256": "2a0e935a90371b8211babece899ca469dc989ff8054d9090339bb201e4bfaf1d"
+        },
+        "sarasa-mono-slab/SarasaMonoSlabK-Bold.woff2": {
+          "from": "SarasaMonoSlabK-Bold.ttf",
+          "sha256": "f49e80e3e5a0e7050e7b1573e1bfbda649bee2a188257a9b6fc2874d14ddafcc"
+        }
+      }
+    },
+    {
+      "url": "https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.43/SarasaMonoSlabJ-TTF-1.0.43.7z",
+      "sha256": "577fd2488655a2a22d250c191445851f22790c7f8f83ae597785af6f53c0a987",
+      "files": {
+        "sarasa-mono-slab/SarasaMonoSlabJ-Regular.woff2": {
+          "from": "SarasaMonoSlabJ-Regular.ttf",
+          "sha256": "15c71ef34629c5c554fa162c40a8c3e7d60d17392cacf8bd89eb97359260ca09"
+        },
+        "sarasa-mono-slab/SarasaMonoSlabJ-Bold.woff2": {
+          "from": "SarasaMonoSlabJ-Bold.ttf",
+          "sha256": "9057ff0e08b7f7b609a40596692a8ffb5958bce24fb8bb65865bd13fa034370c"
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v1.0.43/LICENSE",
+      "sha256": "32c932e0dbae4f6e6386964bbc2d04178707665a05ca65cf636241af13d50a53",
+      "files": {
+        "sarasa-mono-slab/LICENSE": {
+          "from": "LICENSE",
+          "sha256": "32c932e0dbae4f6e6386964bbc2d04178707665a05ca65cf636241af13d50a53"
+        }
+      }
+    }
+  ]
+}
