@@ -2,87 +2,131 @@
   <diagram id="repo-structure" name="Repository structure">
     <mxGraphModel dx="960" dy="664" grid="1" gridSize="8" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="664" math="0" shadow="0">
       <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-        <mxCell id="local" value="Local only (gitignored)" style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#555555;fontColor=#FFFFFF;strokeColor=#555555;swimlaneFillColor=#F2F2F2;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="24" y="16" width="912" height="112" as="geometry"/>
-        </mxCell>
-        <mxCell id="repo" value="Repository" style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#1F4E79;fontColor=#FFFFFF;strokeColor=#1F4E79;swimlaneFillColor=#E8F1F8;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="24" y="160" width="912" height="220" as="geometry"/>
-        </mxCell>
-        <mxCell id="github" value="GitHub" style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#2D6A4F;fontColor=#FFFFFF;strokeColor=#2D6A4F;swimlaneFillColor=#E7F5EC;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="24" y="412" width="912" height="236" as="geometry"/>
-        </mxCell>
-        <mxCell id="html" value="CV*.html&#10;local build" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="40" y="52" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="resume" value="RESUME*.md&#10;source resume, Korean" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
-          <mxGeometry x="272" y="52" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="cv" value="CV*.md&#10;CV: en, ko, jp" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="272" y="196" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="readme" value="README*.md&#10;profile: en, ko, jp" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="736" y="196" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="assets" value="style.css&#10;images/" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="40" y="300" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="convert" value="convert.ts&#10;marked, CV*.md to CV*.html" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="272" y="300" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="workflow" value="deploy-cv.yml&#10;.github/workflows/" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="504" y="300" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="run" value="Actions run (deploy-cv.yml)&#10;npm ci, npm run convert, copy to _site/" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="40" y="448" width="648" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="profile" value="GitHub profile&#10;github.com/violethpark" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="736" y="448" width="184" height="64" as="geometry"/>
-        </mxCell>
-        <mxCell id="pages" value="GitHub Pages&#10;about.violethpark.com&#10;/, /en/, /ko/, /jp/" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="272" y="552" width="184" height="80" as="geometry"/>
-        </mxCell>
-        <mxCell id="e0" value="TASK.md 2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="resume" target="cv">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="Local only (gitignored)" mermaidId="n:local" id="local">
+          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#555555;fontColor=#FFFFFF;strokeColor=#555555;swimlaneFillColor=#F2F2F2;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
+            <mxGeometry x="24" y="16" width="912" height="112" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Repository" mermaidId="n:repo" id="repo">
+          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#1F4E79;fontColor=#FFFFFF;strokeColor=#1F4E79;swimlaneFillColor=#E8F1F8;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
+            <mxGeometry x="24" y="160" width="912" height="220" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="GitHub" mermaidId="n:github" id="github">
+          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#2D6A4F;fontColor=#FFFFFF;strokeColor=#2D6A4F;swimlaneFillColor=#E7F5EC;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
+            <mxGeometry x="24" y="412" width="912" height="236" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="CV*.html&#10;local build" mermaidId="n:html" id="html">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="local">
+            <mxGeometry x="16" y="36" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="RESUME*.md&#10;source resume, Korean" mermaidId="n:resume" id="resume">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="local">
+            <mxGeometry x="248" y="36" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="CV*.md&#10;CV: en, ko, jp" mermaidId="n:cv" id="cv">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+            <mxGeometry x="248" y="36" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="README*.md&#10;profile: en, ko, jp" mermaidId="n:readme" id="readme">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+            <mxGeometry x="712" y="36" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="style.css, fonts/&#10;images/" mermaidId="n:assets" id="assets">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+            <mxGeometry x="16" y="140" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="convert.ts, page.ts&#10;marked, CV*.md to CV*.html" mermaidId="n:convert" id="convert">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+            <mxGeometry x="248" y="140" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="deploy-cv.yml&#10;.github/workflows/" mermaidId="n:workflow" id="workflow">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+            <mxGeometry x="480" y="140" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Actions run (deploy-cv.yml)&#10;npm ci, typecheck, npm run convert, build-site.sh to _site/" mermaidId="n:run" id="run">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="github">
+            <mxGeometry x="16" y="36" width="648" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="GitHub profile&#10;github.com/violethpark" mermaidId="n:profile" id="profile">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="github">
+            <mxGeometry x="712" y="36" width="184" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="GitHub Pages&#10;about.violethpark.com&#10;/, /en/, /ko/, /jp/" mermaidId="n:pages" id="pages">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="github">
+            <mxGeometry x="248" y="140" width="184" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="TASK.md 2" mermaidId="e:resume-&gt;cv#0" id="e0">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="resume" target="cv">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e1" value="summary, TASK.md 3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" edge="1" parent="1" source="cv" target="readme">
-          <mxGeometry relative="1" as="geometry">
+          </mxCell>
+        </UserObject>
+        <UserObject label="summary, TASK.md 3" mermaidId="e:cv-&gt;readme#0" id="e1">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" edge="1" parent="1" source="cv" target="readme">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e2" value="README.md shown" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="readme" target="profile">
-          <mxGeometry relative="1" as="geometry">
+          </mxCell>
+        </UserObject>
+        <UserObject label="README.md shown" mermaidId="e:readme-&gt;profile#0" id="e2">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="readme" target="profile">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="cv" target="convert">
-          <mxGeometry relative="1" as="geometry">
+          </mxCell>
+        </UserObject>
+        <UserObject label="" mermaidId="e:cv-&gt;convert#0" id="e3">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="cv" target="convert">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e4" value="npm run convert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.0000;exitY=0.3125;entryX=1.0000;entryY=0.5000;" edge="1" parent="1" source="convert" target="html">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="248" y="320"/>
-              <mxPoint x="248" y="84"/>
-            </Array>
+          </mxCell>
+        </UserObject>
+        <UserObject label="npm run convert" mermaidId="e:convert-&gt;html#0" id="e4">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.0000;exitY=0.3125;entryX=1.0000;entryY=0.5000;" edge="1" parent="1" source="convert" target="html">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="248" y="320" />
+                <mxPoint x="248" y="84" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="copied" mermaidId="e:assets-&gt;run#0" id="e5">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.1420;entryY=0.0000;" edge="1" parent="1" source="assets" target="run">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e5" value="copied" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.1420;entryY=0.0000;" edge="1" parent="1" source="assets" target="run">
-          <mxGeometry relative="1" as="geometry">
+          </mxCell>
+        </UserObject>
+        <UserObject label="npm run convert" mermaidId="e:convert-&gt;run#0" id="e6">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="convert" target="run">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e6" value="npm run convert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="convert" target="run">
-          <mxGeometry relative="1" as="geometry">
+          </mxCell>
+        </UserObject>
+        <UserObject label="push to main, watched paths" mermaidId="e:workflow-&gt;run#0" id="e7">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.8580;entryY=0.0000;" edge="1" parent="1" source="workflow" target="run">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e7" value="push to main, watched paths" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.8580;entryY=0.0000;" edge="1" parent="1" source="workflow" target="run">
-          <mxGeometry relative="1" as="geometry">
+          </mxCell>
+        </UserObject>
+        <UserObject label="deploy" mermaidId="e:run-&gt;pages#0" id="e8">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="run" target="pages">
+            <mxGeometry relative="1" as="geometry">
           </mxGeometry>
-        </mxCell>
-        <mxCell id="e8" value="deploy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="run" target="pages">
-          <mxGeometry relative="1" as="geometry">
-          </mxGeometry>
-        </mxCell>
+          </mxCell>
+        </UserObject>
       </root>
     </mxGraphModel>
   </diagram>

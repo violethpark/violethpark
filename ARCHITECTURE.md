@@ -14,10 +14,12 @@ GitHub 프로필 페이지와 CV 사이트(about.violethpark.com)가 어떤 파�
 | `RESUME*.md` | 원본 이력서(한국어). gitignore 대상이라 로컬에만 있다 | `CV.md`의 사실 근거 |
 | [CV.md](CV.md), [CV_ko.md](CV_ko.md), [CV_jp.md](CV_jp.md) | CV 원문(영어 기본, 한국어, 일본어) | `CV*.html`, CV 사이트 |
 | [README.md](README.md), [README_ko.md](README_ko.md), [README_jp.md](README_jp.md) | CV 요약 프로필 | github.com/violethpark (`README.md`). 사이트에는 들어가지 않는다 |
-| [convert.ts](convert.ts) | `CV*.md`를 marked로 `CV*.html`로 변환(`npm run convert`) | `CV*.html` |
-| [style.css](style.css), [images/](images/) | CV HTML의 스타일과 이미지 | 사이트에 복사된다 |
+| [convert.ts](convert.ts) | `CV*.md`를 marked로 `CV*.html`로 변환(`npm run convert`). 제목 id, 목차, 절 정보 패널, 언어별 UI 글자를 만든다 | `CV*.html` |
+| [page.ts](page.ts) | 테마 버튼과 현재 절 표시. `convert.ts`가 각 페이지에 인라인한다 | `CV*.html` 안의 스크립트 |
+| [style.css](style.css), [fonts/](fonts/fonts.json), [images/](images/) | CV HTML의 스타일(라이트·다크, 반응형 3단), 웹폰트(IBM Plex Sans, Sarasa Mono Slab), 이미지 | 사이트에 복사된다. `style.css`·`fonts/`는 루트 한 벌 |
+| [build-site.sh](build-site.sh) | 변환된 `CV*.html`로 `_site/`를 만든다(복사, 언어 링크, CNAME, 글꼴 sha256 검사) | `_site/` |
 | [deploy-cv.yml](.github/workflows/deploy-cv.yml) | main push(감시 경로) 또는 수동 실행 시 변환해 GitHub Pages에 배포 | about.violethpark.com `/`, `/en/`, `/ko/`, `/jp/` |
-| `CV*.html` | 변환 결과. gitignore 대상이라 커밋하지 않는다 | 로컬 확인용 |
+| `CV*.html`, `_site/` | 변환 결과와 사이트. gitignore 대상이라 커밋하지 않는다 | 로컬 확인용 |
 | [diagrams/](diagrams/) | 이 문서의 그림 | — |
 
 감시 경로와 배포 단계는 [deploy-cv.yml](.github/workflows/deploy-cv.yml)이 정본이다.

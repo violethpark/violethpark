@@ -1,169 +1,646 @@
-/* Reset & Base */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* The CV pages. The layout, the dark colours, and the fonts follow
+   violethpark/workspace plan-page.css (51087a6), which took its look and
+   light colours from this file. Every colour is a light-dark() pair: the
+   page follows the system unless data-theme on the root picks one.
 
+   One column below 60rem with the contents in a drawer, the contents beside
+   the text from 60rem, and the section panel as a third column from 87.5rem.
+   Below that the panel's sections show as closed blocks under their
+   headings. The title and theme button stay in view: in a bar over the page
+   below 60rem, at the top of the text from there.
+
+   Text is IBM Plex Sans: its Latin cut first, then the KR cut for Hangul
+   (the same Latin, but few accented letters); under lang="ja" the JP cut,
+   whose Latin is drawn larger to match kana. Code is Sarasa Mono Slab K, J
+   under lang="ja", without ligatures. Each face tries the installed font
+   first, then the file in fonts/ next to this file. A Regular face's full
+   name is its family name. */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("IBM Plex Sans"),
+    local("IBMPlexSans"),
+    url("fonts/ibm-plex-sans/IBMPlexSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("IBM Plex Sans Bold"),
+    local("IBMPlexSans-Bold"),
+    url("fonts/ibm-plex-sans/IBMPlexSans-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans KR";
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("IBM Plex Sans KR"),
+    local("IBMPlexSansKR"),
+    url("fonts/ibm-plex-sans/IBMPlexSansKR-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans KR";
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("IBM Plex Sans KR Bold"),
+    local("IBMPlexSansKR-Bold"),
+    url("fonts/ibm-plex-sans/IBMPlexSansKR-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("IBM Plex Sans JP"),
+    local("IBMPlexSansJP"),
+    url("fonts/ibm-plex-sans/IBMPlexSansJP-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("IBM Plex Sans JP Bold"),
+    local("IBMPlexSansJP-Bold"),
+    url("fonts/ibm-plex-sans/IBMPlexSansJP-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sarasa Mono Slab K";
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("Sarasa Mono Slab K"),
+    local("Sarasa-Mono-Slab-K-Regular"),
+    url("fonts/sarasa-mono-slab/SarasaMonoSlabK-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sarasa Mono Slab K";
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("Sarasa Mono Slab K Bold"),
+    local("Sarasa-Mono-Slab-K-Bold"),
+    url("fonts/sarasa-mono-slab/SarasaMonoSlabK-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sarasa Mono Slab J";
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("Sarasa Mono Slab J"),
+    local("Sarasa-Mono-Slab-J-Regular"),
+    url("fonts/sarasa-mono-slab/SarasaMonoSlabJ-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sarasa Mono Slab J";
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("Sarasa Mono Slab J Bold"),
+    local("Sarasa-Mono-Slab-J-Bold"),
+    url("fonts/sarasa-mono-slab/SarasaMonoSlabJ-Bold.woff2") format("woff2");
+}
+:root {
+  color-scheme: light dark;
+  --outer: light-dark(#e8e8e8, #0f0f0e);
+  --paper: light-dark(#fafaf5, #1a1a17);
+  --fg: light-dark(#0a0a0a, #e8e8e0);
+  --heading: light-dark(#000000, #f5f5ee);
+  --link: light-dark(#005cc5, #79b8ff);
+  --hover: light-dark(#dddddd, #33332e);
+  --muted: light-dark(#444444, #b0b0a8);
+  --meta: light-dark(#555555, #a0a098);
+  --prefix-2: light-dark(#666666, #8a8a82);
+  /* The original #888 is below 4.5:1 on the paper. */
+  --prefix-3: light-dark(#707070, #8a8a82);
+  --border: light-dark(#333333, #8a8a80);
+  --shadow: light-dark(#999999, #3a3a36);
+  --line: light-dark(#aaaaaa, #55554f);
+  --code-bg: light-dark(#eeeeee, #262622);
+  --code-line: light-dark(#cccccc, #44443e);
+  --pre-bg: light-dark(#f0f0ea, #20201c);
+  --quote-line: light-dark(#555555, #8a8a80);
+  --th-bg: light-dark(#dddddd, #2a2a26);
+  --rule: light-dark(#999999, #6a6a64);
+  --sans:
+    "IBM Plex Sans", "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans CJK KR", sans-serif;
+  --mono:
+    "Sarasa Mono Slab K", "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    monospace;
+  --toc: 13.75rem;
+  /* The CV's 900px sheet. */
+  --text: 56.25rem;
+  --panel: 16.25rem;
+  scroll-padding-top: 4rem;
+}
+/* The JP cut of Plex has no Hangul. */
+:lang(ja) {
+  --sans:
+    "IBM Plex Sans JP", "IBM Plex Sans KR", "Hiragino Sans", "Yu Gothic",
+    "Noto Sans CJK JP", sans-serif;
+  --mono:
+    "Sarasa Mono Slab J", "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    monospace;
+}
+/* Without specificity, so the code rules below still win inside it. */
+:where(:lang(ja)) {
+  font-family: var(--sans);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
 body {
-  font-family: "SFMono-Regular", "Cascadia Code", "Fira Code", Consolas,
-    "Liberation Mono", Menlo, monospace;
-  font-size: 14px;
+  margin: 0;
+  background: var(--outer);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 0.875rem;
   line-height: 1.6;
-  color: #0a0a0a;
-  background: #e8e8e8;
-  padding: 2rem 1rem;
+  /* Long URLs and runs of inline code break instead of widening the page. */
+  overflow-wrap: break-word;
+}
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}
+a:hover {
+  color: var(--fg);
+  background: var(--hover);
+}
+button {
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
+  border: 0.125rem solid var(--border);
+  border-radius: 0;
+  box-shadow: 0.125rem 0.125rem 0 var(--shadow);
+  background: var(--paper);
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+button:active {
+  box-shadow: none;
+  transform: translate(0.125rem, 0.125rem);
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fafaf5;
-  border: 2px solid #333;
-  border-radius: 0;
-  box-shadow: 4px 4px 0 #999;
+/* The text: a sheet of paper on the grey page. */
+main {
+  grid-area: main;
+  min-width: 0;
   padding: 2.5rem 3rem;
+  border: 0.125rem solid var(--border);
+  box-shadow: 0.25rem 0.25rem 0 var(--shadow);
+  background: var(--paper);
 }
-
-/* Typography */
-h1 {
+main h1 {
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 0.1875rem double var(--border);
+  color: var(--heading);
   font-size: 1.8rem;
-  margin-bottom: .6rem;
-  color: #000;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  border-bottom: 3px double #333;
-  padding-bottom: .4rem;
 }
-
-h2 {
+main h2 {
+  margin: 2rem 0 0.8rem;
+  color: var(--heading);
   font-size: 1.1rem;
-  margin-top: 2rem;
-  margin-bottom: .8rem;
-  color: #000;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  border-bottom: none;
-  padding-bottom: 0;
 }
-h2::before { content: "## "; color: #666; }
-
-h3 {
+/* The prefixes are decoration: screen readers skip them (alt text ""). */
+main h2::before {
+  content: "## " / "";
+  color: var(--prefix-2);
+}
+main h3 {
+  margin: 1.4rem 0 0.5rem;
+  color: var(--heading);
   font-size: 1rem;
-  margin-top: 1.4rem;
-  margin-bottom: .5rem;
-  color: #111;
 }
-h3::before { content: "### "; color: #888; }
-
-p { margin-bottom: .8rem; }
-
-blockquote {
-  border-left: 3px solid #555;
-  padding: .5rem 1rem;
+main h3::before {
+  content: "### " / "";
+  color: var(--prefix-3);
+}
+main p {
+  margin: 0 0 0.8rem;
+}
+main blockquote {
   margin: 1rem 0;
-  color: #444;
-  background: #f0f0ea;
-  border-radius: 0;
+  padding: 0.5rem 1rem;
+  border-left: 0.1875rem solid var(--quote-line);
+  background: var(--pre-bg);
+  color: var(--muted);
   font-style: italic;
 }
-blockquote::before { content: "> "; color: #888; font-style: normal; }
-
-/* Links */
-a { color: #005cc5; text-decoration: underline; text-underline-offset: 2px; }
-a:hover { color: #000; background: #ddd; }
-
-/* Tables */
-table { width: 100%; border-collapse: collapse; margin: .8rem 0; font-size: .9rem; }
-th, td {
-  text-align: left;
-  padding: .4rem .6rem;
-  border: 1px solid #aaa;
+main blockquote::before {
+  content: "> " / "";
+  color: var(--prefix-2);
+  font-style: normal;
 }
-th { background: #ddd; font-weight: 700; text-transform: uppercase; font-size: .8rem; letter-spacing: .05em; }
-
-/* Lists */
-ul, ol { margin: .5rem 0 .8rem 1.5rem; }
-li { margin-bottom: .3rem; }
-ul li::marker { content: "- "; }
-
-/* Horizontal rules */
-hr {
-  border: none;
-  margin: 1.8rem 0;
-  text-align: center;
-  overflow: visible;
+main blockquote > :last-child {
+  margin-bottom: 0;
+}
+main ul,
+main ol {
+  margin: 0.5rem 0 0.8rem 1.5rem;
+  padding: 0;
+}
+main li {
+  margin-bottom: 0.3rem;
+}
+/* Only a ul's own items: a numbered list inside one keeps its numbers. */
+main ul > li::marker {
+  content: "- ";
+}
+/* A rule of box-drawing characters, cut at the column instead of widening
+   it. In the text font, not the code font: the CV has no code, and Sarasa
+   would be fetched for this rule alone. */
+main hr {
   height: 1.2em;
+  margin: 1.8rem 0;
+  border: none;
+  overflow: hidden;
   line-height: 1.2em;
+  text-align: center;
+  white-space: nowrap;
 }
-hr::after {
-  content: "────────────────────────────────────────";
-  color: #999;
-  font-size: .8rem;
-  letter-spacing: .1em;
+main hr::after {
+  content: "────────────────────────────────────────" / "";
+  color: var(--rule);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
 }
-
-/* Images */
-img { max-width: 100%; height: auto; border: 1px solid #aaa; border-radius: 0; margin: .5rem 0; }
-
-/* Code */
-code {
-  background: #eee;
-  padding: .15rem .4rem;
-  border-radius: 0;
-  border: 1px solid #ccc;
-  font-size: .9em;
-  font-family: inherit;
+main code {
+  padding: 0.15rem 0.4rem;
+  border: 0.0625rem solid var(--code-line);
+  background: var(--code-bg);
+  font-size: 0.9em;
 }
-pre {
-  background: #f0f0ea;
+main code,
+main pre,
+main kbd,
+main samp {
+  font-family: var(--mono);
+  /* Sarasa draws -> != <= and the like as one sign; code shows what is typed. */
+  font-variant-ligatures: none;
+}
+main pre {
+  margin: 0.8rem 0;
   padding: 1rem;
-  border: 1px solid #aaa;
-  border-radius: 0;
+  border: 0.0625rem solid var(--line);
+  background: var(--pre-bg);
   overflow-x: auto;
-  margin: .8rem 0;
 }
-pre code { background: none; padding: 0; border: none; }
-
-/* Strong */
-strong { font-weight: 700; }
-
-/* Print */
-@media print {
-  body { background: #fff; padding: 0; }
-  .container { box-shadow: none; border: none; padding: 0; max-width: none; }
-  h2::before, h3::before, blockquote::before, hr::after { content: none; }
+main pre code {
+  padding: 0;
+  border: none;
+  background: none;
+}
+main table {
+  display: block;
+  margin: 0.8rem 0;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+main th,
+main td {
+  padding: 0.4rem 0.6rem;
+  border: 0.0625rem solid var(--line);
+  text-align: left;
+  /* Korean breaks between words, not letters; a table too wide for that
+     scrolls in its own box. */
+  word-break: keep-all;
+}
+main th {
+  background: var(--th-bg);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+main img {
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0;
+  border: 0.0625rem solid var(--line);
+}
+/* The profile photo beside the title keeps clear of the text around it. */
+main img[align="right"] {
+  margin: 0 0 1rem 1.5rem;
 }
 
-/* Responsive — Tablet */
-@media (max-width: 768px) {
-  body { padding: 1rem 0.5rem; }
-  .container { padding: 1.5rem 1.2rem; }
-  h1 { font-size: 1.4rem; }
-  h2 { font-size: 1rem; }
+.skip {
+  position: absolute;
+  left: -625rem;
+}
+.skip:focus {
+  left: 1rem;
+  top: 0.5rem;
+  z-index: 2;
+  padding: 0.5rem;
+  background: var(--paper);
+}
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-bottom: 0.125rem solid var(--border);
+  background: var(--outer);
+}
+.bar button,
+.main-bar button {
+  flex: none;
+}
+.main-bar {
+  display: none;
+}
+.bar-title {
+  flex: 1;
+  overflow: hidden;
+  color: var(--heading);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  img[align="right"] {
-    float: none !important;
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, var(--text));
+  grid-template-areas: "main";
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem 4rem;
+}
+.toc {
+  grid-area: toc;
+}
+.panel {
+  grid-area: panel;
+  display: none;
+}
+
+/* The contents: a drawer (popover) on narrow screens. */
+.toc:popover-open {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: min(20rem, 85vw);
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 1rem 1rem;
+  border: 0;
+  border-right: 0.125rem solid var(--border);
+  background: var(--paper);
+  color: var(--fg);
+  overflow-y: auto;
+}
+.toc::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+.toc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 0.5rem;
+  color: var(--meta);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.toc ol ol {
+  padding-left: 0.75rem;
+}
+.toc a {
+  display: block;
+  padding: 0.75rem 0.5rem;
+  border-left: 0.1875rem solid transparent;
+  color: var(--fg);
+  text-decoration: none;
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+.toc a[aria-current] {
+  border-left-color: var(--border);
+  background: var(--hover);
+  color: var(--heading);
+  font-weight: 700;
+}
+.js .toc li:not(.open) > ol {
+  display: none;
+}
+
+.section-info {
+  margin: 0.5rem 0 1rem;
+  padding: 0 0.75rem;
+  border: 0.0625rem solid var(--line);
+  background: var(--pre-bg);
+  font-size: 0.8125rem;
+}
+.section-info summary {
+  padding: 0.75rem 0;
+  color: var(--meta);
+  cursor: pointer;
+}
+.info-head {
+  margin: 0.5rem 0 0.25rem;
+  color: var(--meta);
+  font-weight: 700;
+}
+.info-list {
+  margin: 0 0 0.5rem;
+  padding-left: 1.2em;
+}
+.panel-title,
+.panel-page {
+  margin: 0 0 0.5rem;
+}
+.panel-title {
+  font-weight: 700;
+}
+.panel-page {
+  color: var(--meta);
+}
+.panel-section + .panel-section {
+  margin-top: 1rem;
+}
+.js .panel-section:not(.current) {
+  display: none;
+}
+
+/* Tablet and phone. */
+@media (max-width: 48rem) {
+  .layout {
+    padding: 1rem 0.5rem 3rem;
+  }
+  main {
+    padding: 1.5rem 1.2rem;
+  }
+  main h1 {
+    font-size: 1.4rem;
+  }
+  main h2 {
+    font-size: 1rem;
+  }
+  /* The profile photo leaves the side of the title. */
+  main img[align="right"] {
+    float: none;
     display: block;
     margin: 0 auto 1rem;
   }
-
-  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-
-  hr::after {
-    content: "────────────────────────";
+}
+@media (max-width: 30rem) {
+  .layout {
+    padding: 0.5rem 0.25rem 2rem;
+  }
+  main {
+    padding: 1rem 0.8rem;
+  }
+  main h1 {
+    font-size: 1.2rem;
+  }
+  main h2 {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+  }
+  main h3 {
+    font-size: 0.9rem;
+  }
+  main th,
+  main td {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.85rem;
+  }
+  /* The pictures fill the phone; the profile photo keeps its size. */
+  main img:not([align]) {
+    width: 100%;
   }
 }
 
-/* Responsive — Mobile */
-@media (max-width: 480px) {
-  body { padding: 0.5rem 0.25rem; font-size: 13px; }
-  .container { padding: 1rem .8rem; }
-  h1 { font-size: 1.2rem; }
-  h2 { font-size: .95rem; margin-top: 1.5rem; }
-  h3 { font-size: .9rem; }
+@media (min-width: 60rem) {
+  .bar,
+  .toc-close {
+    display: none;
+  }
+  /* Across the card, over its top padding, as the bar spans the window. */
+  .has-toc .main-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: -2.5rem -3rem 1.5rem;
+    padding: 0.25rem 3rem;
+    border-bottom: 0.125rem solid var(--border);
+    background: var(--paper);
+  }
+  .has-toc .layout {
+    grid-template-columns: var(--toc) minmax(0, var(--text));
+    grid-template-areas: "toc main";
+  }
+  /* A sidebar here: undo the popover's own placement and hiding. */
+  .toc,
+  .toc:popover-open {
+    position: sticky;
+    inset: 1rem auto auto;
+    display: block;
+    align-self: start;
+    width: auto;
+    height: auto;
+    max-height: calc(100vh - 2rem);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: 0.8125rem;
+    overflow-y: auto;
+  }
+  .toc a {
+    padding: 0.25rem 0.5rem;
+  }
+}
 
-  th, td { padding: .3rem .4rem; font-size: .85rem; }
+@media (min-width: 87.5rem) {
+  .has-toc.has-panel .layout {
+    grid-template-columns: var(--toc) minmax(0, var(--text)) var(--panel);
+    grid-template-areas: "toc main panel";
+  }
+  .has-panel .panel {
+    position: sticky;
+    top: 1rem;
+    display: block;
+    align-self: start;
+    max-height: calc(100vh - 2rem);
+    font-size: 0.8125rem;
+    overflow-y: auto;
+  }
+  .has-panel .section-info {
+    display: none;
+  }
+}
 
-  img { width: 100%; height: auto; }
-
-  hr::after {
-    content: "────────────────";
+/* Paper and ink: light, without the decoration. */
+@media print {
+  :root,
+  :root[data-theme] {
+    color-scheme: light;
+  }
+  body {
+    background: none;
+  }
+  /* As specific as the screen rules they undo. */
+  .skip,
+  .bar,
+  .has-toc .main-bar,
+  .toc,
+  .toc:popover-open,
+  .has-panel .panel,
+  .section-info,
+  .theme-toggle {
+    display: none;
+  }
+  .layout,
+  .has-toc .layout,
+  .has-toc.has-panel .layout {
+    display: block;
+    padding: 0;
+  }
+  main {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+  main h2::before,
+  main h3::before,
+  main blockquote::before,
+  main hr::after {
+    content: none;
   }
 }

@@ -27,7 +27,10 @@ violethpark/
 ├── CV_jp.md           # CV (일본어)
 ├── CV*.html           # CV HTML 변환 결과 (convert.ts로 생성, 로컬 전용·gitignore)
 ├── style.css          # CV HTML용 스타일시트
-├── convert.ts         # CV*.md → CV*.html 변환 스크립트
+├── convert.ts         # CV*.md → CV*.html 변환 스크립트 (node로 직접 실행)
+├── page.ts            # CV HTML에 인라인하는 브라우저 스크립트 (테마, 현재 절)
+├── build-site.sh      # CV*.html로 배포용 _site/ 구성
+├── fonts/             # 웹폰트 woff2·LICENSE, 고정 목록 fonts.json
 ├── package.json       # Node.js 프로젝트 설정
 ├── tsconfig.json      # TypeScript 설정
 ├── images/            # 이미지 자료
