@@ -1,15 +1,18 @@
 {
+  // convert.ts runs on Node, which strips types instead of compiling them:
+  // only erasable syntax and explicit .ts imports. page.ts runs in the
+  // browser, inlined by convert.ts.
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "esModuleInterop": true,
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
     "strict": true,
-    "outDir": "dist",
-    "rootDir": ".",
     "skipLibCheck": true,
+    "noEmit": true,
     "types": ["node"],
-    "resolveJsonModule": true
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["convert.ts"]
+  "include": ["convert.ts", "page.ts"]
 }
