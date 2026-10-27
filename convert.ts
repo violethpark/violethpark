@@ -11,9 +11,10 @@ const FILE_PATTERN = /^CV.*\.md$/i;
 const LANGUAGE_LINK = /^CV(_\w+)?\.md$/i;
 const CSS_FILE = "style.css";
 
-// The layout follows violethpark/workspace plan-html (51087a6): contents on
-// the left, the current section's panel on the right, both narrowing to a
-// drawer and closed blocks on smaller screens (see style.css).
+// The layout follows violethpark/workspace plan-html (51087a6, with the
+// section buttons and heading links of violethpark/workspace#226): contents
+// on the left, the current section's panel on the right, narrowing to a
+// drawer and a button beside each h2 on smaller screens (see style.css).
 
 // ─── Page Text ───────────────────────────────────────────────────
 
@@ -171,8 +172,8 @@ function infoList(head: string, items: string[]): string {
   );
 }
 
-// What a section holds, shown in the panel and, on narrower screens, in a
-// closed block under its heading.
+// What a section holds, shown in the panel and, on narrower screens, under
+// its heading by the heading's button.
 function sectionInfo(s: Section, ui: Ui): string {
   return (
     infoList(ui.subs, s.subs.map(anchorLink)) +
@@ -182,20 +183,6 @@ function sectionInfo(s: Section, ui: Ui): string {
         (l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a>`,
       ),
     )
-  );
-}
-
-function sectionSummary(s: Section, ui: Ui): string {
-  const counts = [
-    [ui.subs, s.subs.length],
-    [ui.links, s.links.length],
-  ] as const;
-  return (
-    `${ui.section}: ` +
-    counts
-      .filter(([, n]) => n)
-      .map(([name, n]) => `${name} ${n}`)
-      .join(" · ")
   );
 }
 
@@ -349,15 +336,26 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
       },
       heading(token) {
         const id = ids.get(token);
-        const inner = this.parser.parseInline(token.tokens);
-        const html = `<h${token.depth}${id === undefined ? "" : ` id="${escapeHtml(id)}"`}>${inner}</h${token.depth}>\n`;
+        const render = (inline: Token[]) => this.parser.parseInline(inline);
+        const inner =
+          id !== undefined && token.depth >= 2 && token.depth <= 4
+            ? linkedHeading(token.tokens, id, render)
+            : render(token.tokens);
+        const html = `<h${token.depth}${id === undefined ? "" : ` id="${escapeHtml(id)}"`}>${inner}</h${token.depth}>`;
         const s = sectionOf.get(token);
         const info = s ? sectionInfo(s, ui) : "";
-        if (!s || !info) return html;
+        if (!s || !info) return `${html}\n`;
+        // Below the panel's width the button opens what the panel would show.
+        // It sits outside the heading, which keeps the heading's name, and
+        // the page script shows it: without the script both stay hidden, and
+        // the contents and the text hold the same.
+        const sid = escapeHtml(s.id);
         return (
-          html +
-          `<details class="section-info"><summary>${sectionSummary(s, ui)}</summary>` +
-          `${info}</details>\n`
+          `<div class="section-head">${html}<button type="button" ` +
+          `class="section-toggle" aria-expanded="false" ` +
+          `aria-controls="cv.info.${sid}" aria-describedby="${sid}" hidden>` +
+          `${ui.section}</button></div>\n` +
+          `<div id="cv.info.${sid}" class="section-info" hidden>${info}</div>\n`
         );
       },
     },
@@ -367,6 +365,43 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
   const title = extractTitle(markdown) ?? basename(srcPath, extname(srcPath));
   const html = htmlTemplate({ title, lang, body, sections, languages });
   await writeFile(outPath, html, "utf-8");
+}
+
+// The headings the contents and the panel list link to themselves, as their
+// entries there do (after violethpark/workspace plan-html). A heading's own
+// links stay as they are, between the linked runs of its text: links may
+// not nest.
+function linkedHeading(
+  tokens: Token[],
+  id: string,
+  render: (inline: Token[]) => string,
+): string {
+  const parts: string[] = [];
+  let run: Token[] = [];
+  let depth = 0;
+  const flush = () => {
+    if (!run.length) return;
+    const html = render(run);
+    parts.push(
+      run.some((t) => t.type !== "text" || t.raw.trim())
+        ? `<a href="#${escapeHtml(id)}" class="heading-link">${html}</a>`
+        : html,
+    );
+    run = [];
+  };
+  for (const t of tokens) {
+    const html = t.type === "html" ? t.raw : "";
+    if (/^<a[\s>]/i.test(html)) depth++;
+    if (t.type === "link" || depth) {
+      flush();
+      parts.push(render([t]));
+    } else {
+      run.push(t);
+    }
+    if (/^<\/a\s*>/i.test(html)) depth = Math.max(0, depth - 1);
+  }
+  flush();
+  return parts.join("");
 }
 
 /** Extract the first `# Heading` as the document title. */

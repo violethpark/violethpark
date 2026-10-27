@@ -5,8 +5,8 @@
 
    One column below 60rem with the contents in a drawer, the contents beside
    the text from 60rem, and the section panel as a third column from 87.5rem.
-   Below that the panel's sections show as closed blocks under their
-   headings. The title and theme button stay in view: in a bar over the page
+   Below that a button beside each h2 opens its panel section under the
+   heading (as plan-html from violethpark/workspace#226). The title and theme button stay in view: in a bar over the page
    below 60rem, at the top of the text from there.
 
    Text is IBM Plex Sans: its Latin cut first, then the KR cut for Hangul
@@ -459,17 +459,44 @@ main img[align="right"] {
   display: none;
 }
 
+/* A heading links to itself, as in the contents, without looking like a link
+   until pointed at. */
+.heading-link {
+  color: inherit;
+  text-decoration: none;
+}
+.heading-link:hover,
+.heading-link:focus-visible {
+  text-decoration: underline;
+}
+/* An h2 and its section button on one line, the button at the right end. */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.section-head > :first-child {
+  flex: 1;
+  min-width: 0;
+}
+.section-toggle {
+  min-height: 2.25rem;
+  padding: 0 0.625rem;
+  color: var(--meta);
+  font-size: 0.8125rem;
+}
+.section-toggle::after {
+  content: " ▸" / "";
+}
+.section-toggle[aria-expanded="true"]::after {
+  content: " ▾" / "";
+}
 .section-info {
   margin: 0.5rem 0 1rem;
-  padding: 0 0.75rem;
+  padding: 0.25rem 0.75rem;
   border: 0.0625rem solid var(--line);
   background: var(--pre-bg);
   font-size: 0.8125rem;
-}
-.section-info summary {
-  padding: 0.75rem 0;
-  color: var(--meta);
-  cursor: pointer;
 }
 .info-head {
   margin: 0.5rem 0 0.25rem;
@@ -605,6 +632,7 @@ main img[align="right"] {
     font-size: 0.8125rem;
     overflow-y: auto;
   }
+  .has-panel .section-toggle,
   .has-panel .section-info {
     display: none;
   }
@@ -626,6 +654,7 @@ main img[align="right"] {
   .toc,
   .toc:popover-open,
   .has-panel .panel,
+  .section-toggle,
   .section-info,
   .theme-toggle {
     display: none;
