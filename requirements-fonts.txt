@@ -1,4 +1,4 @@
-# fontTools and brotli for subset-fonts.py (build-site.sh), installed with
+# fontTools and brotli for subset-fonts.py (build-site.ts), installed with
 # pip install --require-hashes -r requirements-fonts.txt. Every file of each
 # release is listed so pip can pick the wheel for its Python and platform.
 fonttools==4.67.0 \

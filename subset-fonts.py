@@ -1,4 +1,4 @@
-"""Cuts IBM Plex Sans down to the characters the site uses. build-site.sh runs
+"""Cuts IBM Plex Sans down to the characters the site uses. build-site.ts runs
 it on the laid-out site; it writes the cuts to <site>/fonts/cv-sans/.
 
 IBM Plex has the Reserved Font Name "Plex" under the OFL, and a subset is a

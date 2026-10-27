@@ -29,15 +29,22 @@ violethpark/
 ├── style.css          # CV HTML용 스타일시트
 ├── convert.ts         # CV*.md → CV*.html 변환 스크립트 (node로 직접 실행)
 ├── page.ts            # CV HTML에 인라인하는 브라우저 스크립트 (테마, 현재 절)
-├── build-site.sh      # CV*.html로 배포용 _site/ 구성
-├── subset-fonts.py    # 본문 글꼴을 사이트 글자로 서브셋 (build-site.sh가 실행)
+├── build-site.ts      # CV*.html로 배포용 _site/ 구성 (npm run build-site)
+├── subset-fonts.py    # 본문 글꼴을 사이트 글자로 서브셋 (build-site.ts가 실행)
 ├── requirements-fonts.txt # subset-fonts.py의 fontTools·brotli (해시 고정)
+├── requirements-dev.txt   # Ruff (해시 고정, requirements-fonts.txt와 같은 venv)
 ├── fonts/             # 웹폰트 woff2·LICENSE, 고정 목록 fonts.json
-├── package.json       # Node.js 프로젝트 설정
-├── tsconfig.json      # TypeScript 설정
+├── package.json       # Node.js 프로젝트 설정, 검사 명령
+├── tsconfig.json      # TypeScript 설정 (workspace 수준 엄격 옵션)
+├── .prettierignore    # Prettier 제외 (Markdown, lockfile)
+├── pyrightconfig.json # Pyright strict 설정
+├── ruff.toml          # Ruff 규칙
+├── typings/           # fontTools stub (subset-fonts.py가 쓰는 API만)
+├── config/lint/       # ESLint 패키지 (TypeScript 6, 따로 npm ci)
 ├── images/            # 이미지 자료
 ├── diagrams/          # ARCHITECTURE.md 그림 (.mmd, .drawio, .drawio.svg)
 └── .github/workflows/
+    ├── check.yml      # PR·main push마다 TypeScript·Python 검사
     └── deploy-cv.yml  # CV를 GitHub Pages(about.violethpark.com)에 배포
 ```
 
@@ -86,6 +93,17 @@ violethpark/
 - 이미지 파일명에 한글이 포함될 경우, 가능하면 영문으로 변경을 제안한다.
 - 커밋 메시지는 한국어로 작성해도 무방하다.
 - 파일 수정 시 변경 사유를 간단히 기록한다.
+- 스크립트와 설정을 고치면 `check.yml`과 같은 검사를 오류·경고 없이 통과시킨다.
+  규칙을 낮추거나 무시 주석(`eslint-disable`, `# type: ignore`, `# noqa` 등)을 달지 않고 코드를 고친다.
+
+  ```bash
+  npm ci && npm ci --prefix config/lint
+  python3 -m venv .venv-fonts
+  .venv-fonts/bin/pip install --require-hashes \
+    -r requirements-fonts.txt -r requirements-dev.txt
+  npm run typecheck && npm run lint && npm run format:check
+  npm run pyright && npm run ruff
+  ```
 
 ---
 
