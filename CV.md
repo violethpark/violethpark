@@ -2,7 +2,7 @@
 
 *[한국어](CV_ko.md) | [日本語](CV_jp.md)*
 
-# Hyungkwan Park (박형관)
+# HyungKwan Park (박형관)
 
 > A full-stack software engineer who thinks from the customer's perspective, designs comprehensible architecture, and builds reliable systems.
 
@@ -159,7 +159,7 @@ Republic of Korea Army, Sergeant, Honorable Discharge (May 2013 – Feb 2015)
 
 ## 💡 About Me
 
-I'm Hyungkwan Park, a full-stack software engineer driven by curiosity and a passion for problem-solving. I find fulfillment in overcoming challenges and joy in continuous learning. Through diverse projects, I've built expertise in both frontend and backend development, and I value teamwork to create better outcomes. I thrive on new challenges and growth, always striving to deliver better services.
+I'm HyungKwan Park, a full-stack software engineer driven by curiosity and a passion for problem-solving. I find fulfillment in overcoming challenges and joy in continuous learning. Through diverse projects, I've built expertise in both frontend and backend development, and I value teamwork to create better outcomes. I thrive on new challenges and growth, always striving to deliver better services.
 
 ---
 

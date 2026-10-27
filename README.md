@@ -1,6 +1,6 @@
 *[한국어](README_ko.md) | [日本語](README_jp.md)*
 
-# 👋 Hi, I'm Hyungkwan Park!
+# 👋 Hi, I'm HyungKwan Park!
 
 > A full-stack software engineer who thinks from the customer's perspective and builds reliable systems.
 

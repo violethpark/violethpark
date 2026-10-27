@@ -96,7 +96,7 @@
 
 ### Task 6. CV*.html 생성 (HTML 변환)
 
-- **입력:** `CV.md`, `CV_ko.md`, `CV_jp.md`, `convert.ts`, `style.css`
+- **입력:** `CV.md`, `CV_ko.md`, `CV_jp.md`, `convert.ts`, `page.ts`, `style.css`
 - **출력:** `CV.html`, `CV_ko.html`, `CV_jp.html`
 - **목표:** 모든 MD 파일 작업 완료 후 `convert.ts`를 실행하여 CV HTML 파일을 생성한다.
 - **실행 명령:** `npm run convert`
@@ -104,26 +104,27 @@
   - **Task 1~5가 모두 완료된 후에 실행한다.** 이 Task는 항상 마지막에 실행한다.
   - MD 파일이 수정될 때마다 재실행하여 HTML을 최신 상태로 유지한다.
   - 변환 후 HTML 파일이 정상 생성되었는지 확인한다.
-  - `style.css`가 함께 존재해야 HTML이 올바르게 렌더링된다.
+  - `style.css`와 `fonts/`가 함께 존재해야 HTML이 올바르게 렌더링된다.
   - `node_modules`가 없는 경우 `npm install`을 먼저 실행한다.
 
 ### Task 7. GitHub Pages 배포 (GitHub Actions)
 
-- **입력:** `CV*.md`, `convert.ts`, `style.css`, `images/`
+- **입력:** `CV*.md`, `convert.ts`, `page.ts`, `style.css`, `fonts/`, `images/`
   (`CV*.html`은 워크플로가 직접 만든다)
 - **출력:** GitHub Pages (`https://about.violethpark.com/`)
 - **목표:** CV*.md를 HTML로 변환해 언어별 경로(`/`, `/en/`, `/ko/`, `/jp/`)로
   GitHub Pages에 자동 배포
 - **워크플로우:** `.github/workflows/deploy-cv.yml` (감시 경로와 배포 단계의 정본)
 - **주의사항:**
-  - `main` 브랜치 push에서 감시 경로(`CV*.md`, `style.css`, `convert.ts`,
-    `images/**`, `package.json`, 워크플로 파일)가 바뀌면 자동 실행된다.
+  - `main` 브랜치 push에서 감시 경로(`deploy-cv.yml`의 `paths`)가 바뀌면 자동 실행된다.
     Actions 화면에서 수동 실행(`workflow_dispatch`)도 할 수 있다.
-  - `npm ci`, `npm run convert`로 CV*.html을 만든 뒤 CV.html →
+  - `npm ci`, `npm run typecheck`, `npm run convert`로 CV*.html을 만든 뒤
+    `build-site.sh`가 CV.html →
     `/index.html`과 `/en/index.html`, CV_ko.html → `/ko/index.html`,
     CV_jp.html → `/jp/index.html`로 복사한다.
   - 언어 간 교차 링크(`CV*.md`)를 `/en/`, `/ko/`, `/jp/`로 바꿔 쓴다.
-  - `style.css`와 `images/`를 각 경로에 함께 배포한다.
+  - `images/`는 각 경로에, `style.css`와 `fonts/`는 루트에 한 벌 배포한다.
+  - 로컬 확인: `npm run convert && bash build-site.sh`, `python3 -m http.server -d _site`.
   - GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
   - 커스텀 도메인: `about.violethpark.com` (워크플로가 `CNAME`을 쓴다).
     `https://violethpark.github.io/violethpark/`는 이 도메인으로 리디렉션된다.
