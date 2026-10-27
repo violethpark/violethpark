@@ -6,11 +6,14 @@
   "scripts": {
     "convert": "node convert.ts",
     "build-site": "node build-site.ts",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "pyright": "pyright",
+    "ruff": ".venv-fonts/bin/ruff check && .venv-fonts/bin/ruff format --check"
   },
   "devDependencies": {
-    "typescript": "^7.0.2",
-    "@types/node": "^24.19.2"
+    "@types/node": "^24.19.2",
+    "pyright": "1.1.414",
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "marked": "^18.1.2"
