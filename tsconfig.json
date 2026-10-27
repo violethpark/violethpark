@@ -1,7 +1,7 @@
 {
-  // convert.ts runs on Node, which strips types instead of compiling them:
-  // only erasable syntax and explicit .ts imports. page.ts runs in the
-  // browser, inlined by convert.ts. The strict options follow
+  // convert.ts and build-site.ts run on Node, which strips types instead of
+  // compiling them: only erasable syntax and explicit .ts imports. page.ts
+  // runs in the browser, inlined by convert.ts. The strict options follow
   // violethpark/workspace .devcontainer/tsconfig.base.json.
   "compilerOptions": {
     "target": "ES2023",
@@ -22,5 +22,5 @@
     "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["convert.ts", "page.ts"]
+  "include": ["build-site.ts", "convert.ts", "page.ts"]
 }

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "convert": "node convert.ts",
+    "build-site": "node build-site.ts",
     "typecheck": "tsc"
   },
   "devDependencies": {

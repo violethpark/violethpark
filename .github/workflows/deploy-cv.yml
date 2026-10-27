@@ -8,7 +8,7 @@ on:
       - "style.css"
       - "convert.ts"
       - "page.ts"
-      - "build-site.sh"
+      - "build-site.ts"
       - "subset-fonts.py"
       - "requirements-fonts.txt"
       - "images/**"
@@ -60,7 +60,7 @@ jobs:
           "$RUNNER_TEMP/fonts/bin/pip" install --require-hashes -r requirements-fonts.txt
 
       - name: Prepare deployment directory
-        run: PYTHON="$RUNNER_TEMP/fonts/bin/python" bash build-site.sh _site
+        run: PYTHON="$RUNNER_TEMP/fonts/bin/python" npm run build-site -- _site
 
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
