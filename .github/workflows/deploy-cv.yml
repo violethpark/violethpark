@@ -9,6 +9,8 @@ on:
       - "convert.ts"
       - "page.ts"
       - "build-site.sh"
+      - "subset-fonts.py"
+      - "requirements-fonts.txt"
       - "images/**"
       - "fonts/**"
       - "package.json"
@@ -52,8 +54,13 @@ jobs:
       - name: Convert CV*.md → CV*.html
         run: npm run convert
 
+      - name: Install the font subsetter
+        run: |
+          python3 -m venv "$RUNNER_TEMP/fonts"
+          "$RUNNER_TEMP/fonts/bin/pip" install --require-hashes -r requirements-fonts.txt
+
       - name: Prepare deployment directory
-        run: bash build-site.sh _site
+        run: PYTHON="$RUNNER_TEMP/fonts/bin/python" bash build-site.sh _site
 
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6

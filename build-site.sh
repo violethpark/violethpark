@@ -4,6 +4,8 @@
 # merge, e.g. `python3 -m http.server -d _site`.
 #
 # Usage: bash build-site.sh [out-dir]   (default: _site)
+# Needs fontTools for subset-fonts.py: PYTHON names a Python that has it
+# (pip install --require-hashes -r requirements-fonts.txt), default python3.
 set -euo pipefail
 
 cd "$(dirname "$0")"
@@ -27,10 +29,11 @@ for pair in .:CV.html en:CV.html ko:CV_ko.html jp:CV_jp.html; do
 done
 
 # One style sheet and one set of fonts at the root, which the style sheet
-# reaches by a path relative to itself.
+# reaches by a path relative to itself. The text font is cut to the
+# characters of the pages below, once their links are final.
 cp style.css "$site/"
-cp -r fonts "$site/"
-rm "$site/fonts/fonts.json"
+mkdir -p "$site/fonts"
+cp -r fonts/sarasa-mono-slab "$site/fonts/"
 for dir in en ko jp; do
   sed -i 's|href="style\.css"|href="../style.css"|' "$site/$dir/index.html"
 done
@@ -43,5 +46,7 @@ for dir in . en ko jp; do
     -e 's|href="CV_jp\.md"|href="/jp/"|g' \
     "$site/$dir/index.html"
 done
+
+"${PYTHON:-python3}" subset-fonts.py "$site"
 
 echo "about.violethpark.com" >"$site/CNAME"
