@@ -1,0 +1,4 @@
+# Markdown is the CV and profile text, written by hand; the lockfiles are
+# npm's. Prettier also skips what .gitignore lists.
+*.md
+package-lock.json
