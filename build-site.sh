@@ -10,7 +10,10 @@ cd "$(dirname "$0")"
 site=${1:-_site}
 
 # The fonts are copied, not built here: check them against their pins.
-(cd fonts && jq -r '.archives[].files | to_entries[] | "\(.value.sha256)  \(.key)"' fonts.json | sha256sum -c --quiet)
+(cd fonts && node -e '
+  for (const a of require("./fonts.json").archives)
+    for (const [file, pin] of Object.entries(a.files)) console.log(pin.sha256 + "  " + file);
+' | sha256sum -c --quiet)
 
 rm -rf "$site"
 mkdir -p "$site"
