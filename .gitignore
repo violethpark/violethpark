@@ -4,3 +4,4 @@ dist/
 **/RESUME*.md
 **/CV*.html
 _site/
+.venv-fonts/

@@ -123,8 +123,11 @@
     `/index.html`과 `/en/index.html`, CV_ko.html → `/ko/index.html`,
     CV_jp.html → `/jp/index.html`로 복사한다.
   - 언어 간 교차 링크(`CV*.md`)를 `/en/`, `/ko/`, `/jp/`로 바꿔 쓴다.
-  - `images/`는 각 경로에, `style.css`와 `fonts/`는 루트에 한 벌 배포한다.
-  - 로컬 확인: `npm run convert && bash build-site.sh`, `python3 -m http.server -d _site`.
+  - `images/`는 각 경로에, `style.css`와 `fonts/`는 루트에 한 벌 배포한다. 본문 글꼴
+    (IBM Plex Sans)은 `subset-fonts.py`가 사이트 글자로 잘라 `CV Sans`로 둔다.
+  - 로컬 확인: `python3 -m venv .venv-fonts && .venv-fonts/bin/pip install --require-hashes -r requirements-fonts.txt`
+    한 번, 그다음 `npm run convert && PYTHON=.venv-fonts/bin/python bash build-site.sh`,
+    `python3 -m http.server -d _site`.
   - GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
   - 커스텀 도메인: `about.violethpark.com` (워크플로가 `CNAME`을 쓴다).
     `https://violethpark.github.io/violethpark/`는 이 도메인으로 리디렉션된다.

@@ -203,7 +203,11 @@ function panelHtml(page: Page, ui: Ui): string {
   const languages = page.languages.length
     ? `<p class="panel-page" aria-label="${ui.languages}">` +
       page.languages
-        .map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a>`)
+        .map(
+          (l) =>
+            `<a href="${escapeHtml(l.href)}"${languageAttributes(l.href)}>` +
+            `${escapeHtml(l.text)}</a>`,
+        )
         .join(" · ") +
       "</p>"
     : "";
@@ -234,6 +238,15 @@ function getLangCode(filename: string): string {
   if (filename.includes("_ko")) return "ko";
   if (filename.includes("_jp")) return "ja";
   return "en";
+}
+
+// A link to another CV names its language, so its label is drawn in that
+// language's font (日本語 in CV Sans JP on the English and Korean pages)
+// and read in that language.
+function languageAttributes(href: string): string {
+  if (!LANGUAGE_LINK.test(href)) return "";
+  const lang = getLangCode(basename(href));
+  return ` hreflang="${lang}" lang="${lang}"`;
 }
 
 // ─── Headings ────────────────────────────────────────────────────
@@ -325,6 +338,13 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
 
   marked.use({
     renderer: {
+      link(token) {
+        const attributes = languageAttributes(token.href);
+        if (!attributes) return false;
+        const title = token.title ? ` title="${escapeHtml(token.title)}"` : "";
+        const inner = this.parser.parseInline(token.tokens);
+        return `<a href="${escapeHtml(token.href)}"${attributes}${title}>${inner}</a>`;
+      },
       heading(token) {
         const id = ids.get(token);
         const inner = this.parser.parseInline(token.tokens);

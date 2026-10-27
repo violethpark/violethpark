@@ -5,96 +5,96 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <UserObject label="Local only (gitignored)" mermaidId="n:local" id="local">
-          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#555555;fontColor=#FFFFFF;strokeColor=#555555;swimlaneFillColor=#F2F2F2;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;align=center;verticalAlign=middle;fillColor=light-dark(#555555,#D0D0D0);fontColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#555555,#D0D0D0);swimlaneFillColor=light-dark(#F2F2F2,#000000);rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
             <mxGeometry x="24" y="16" width="912" height="112" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="Repository" mermaidId="n:repo" id="repo">
-          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#1F4E79;fontColor=#FFFFFF;strokeColor=#1F4E79;swimlaneFillColor=#E8F1F8;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;align=center;verticalAlign=middle;fillColor=light-dark(#1F4E79,#9CC8F0);fontColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#1F4E79,#9CC8F0);swimlaneFillColor=light-dark(#E8F1F8,#000000);rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
             <mxGeometry x="24" y="160" width="912" height="220" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="GitHub" mermaidId="n:github" id="github">
-          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;fillColor=#2D6A4F;fontColor=#FFFFFF;strokeColor=#2D6A4F;swimlaneFillColor=#E7F5EC;rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxCell style="swimlane;html=1;startSize=28;collapsible=0;fontStyle=1;fontSize=14;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;align=center;verticalAlign=middle;fillColor=light-dark(#2D6A4F,#8FD6B0);fontColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#2D6A4F,#8FD6B0);swimlaneFillColor=light-dark(#E7F5EC,#000000);rounded=0;whiteSpace=wrap;" vertex="1" parent="1">
             <mxGeometry x="24" y="412" width="912" height="236" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="CV*.html&#10;local build" mermaidId="n:html" id="html">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="local">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="local">
             <mxGeometry x="16" y="36" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="RESUME*.md&#10;source resume, Korean" mermaidId="n:resume" id="resume">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="local">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;dashed=1;dashPattern=6 4;" vertex="1" parent="local">
             <mxGeometry x="248" y="36" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="CV*.md&#10;CV: en, ko, jp" mermaidId="n:cv" id="cv">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="repo">
             <mxGeometry x="248" y="36" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="README*.md&#10;profile: en, ko, jp" mermaidId="n:readme" id="readme">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="repo">
             <mxGeometry x="712" y="36" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="style.css, fonts/&#10;images/" mermaidId="n:assets" id="assets">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+        <UserObject label="style.css, images/&#10;fonts/, subset-fonts.py" mermaidId="n:assets" id="assets">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="repo">
             <mxGeometry x="16" y="140" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="convert.ts, page.ts&#10;marked, CV*.md to CV*.html" mermaidId="n:convert" id="convert">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="repo">
             <mxGeometry x="248" y="140" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="deploy-cv.yml&#10;.github/workflows/" mermaidId="n:workflow" id="workflow">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="repo">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="repo">
             <mxGeometry x="480" y="140" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="Actions run (deploy-cv.yml)&#10;npm ci, typecheck, npm run convert, build-site.sh to _site/" mermaidId="n:run" id="run">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="github">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="github">
             <mxGeometry x="16" y="36" width="648" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="GitHub profile&#10;github.com/violethpark" mermaidId="n:profile" id="profile">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="github">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="github">
             <mxGeometry x="712" y="36" width="184" height="64" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="GitHub Pages&#10;about.violethpark.com&#10;/, /en/, /ko/, /jp/" mermaidId="n:pages" id="pages">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Helvetica;fontColor=#222222;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" vertex="1" parent="github">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=13;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#222222,#F5F5F5);fillColor=light-dark(#FFFFFF,#000000);strokeColor=light-dark(#333333,#F0F0F0);arcSize=10;" vertex="1" parent="github">
             <mxGeometry x="248" y="140" width="184" height="80" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="TASK.md 2" mermaidId="e:resume-&gt;cv#0" id="e0">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="resume" target="cv">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="resume" target="cv">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="summary, TASK.md 3" mermaidId="e:cv-&gt;readme#0" id="e1">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" edge="1" parent="1" source="cv" target="readme">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" edge="1" parent="1" source="cv" target="readme">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="README.md shown" mermaidId="e:readme-&gt;profile#0" id="e2">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="readme" target="profile">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="readme" target="profile">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="" mermaidId="e:cv-&gt;convert#0" id="e3">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="cv" target="convert">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="cv" target="convert">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="npm run convert" mermaidId="e:convert-&gt;html#0" id="e4">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.0000;exitY=0.3125;entryX=1.0000;entryY=0.5000;" edge="1" parent="1" source="convert" target="html">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.0000;exitY=0.3125;entryX=1.0000;entryY=0.5000;" edge="1" parent="1" source="convert" target="html">
             <mxGeometry relative="1" as="geometry">
               <Array as="points">
                 <mxPoint x="248" y="320" />
@@ -103,26 +103,26 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="copied" mermaidId="e:assets-&gt;run#0" id="e5">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.1420;entryY=0.0000;" edge="1" parent="1" source="assets" target="run">
+        <UserObject label="copied, fonts cut" mermaidId="e:assets-&gt;run#0" id="e5">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.1420;entryY=0.0000;" edge="1" parent="1" source="assets" target="run">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="npm run convert" mermaidId="e:convert-&gt;run#0" id="e6">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="convert" target="run">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="convert" target="run">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="push to main, watched paths" mermaidId="e:workflow-&gt;run#0" id="e7">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.8580;entryY=0.0000;" edge="1" parent="1" source="workflow" target="run">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.8580;entryY=0.0000;" edge="1" parent="1" source="workflow" target="run">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
         </UserObject>
         <UserObject label="deploy" mermaidId="e:run-&gt;pages#0" id="e8">
-          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Helvetica;fontColor=#333333;labelBackgroundColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="run" target="pages">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontFamily=Sarasa Mono Slab J,Sarasa Mono Slab K,monospace;fontColor=light-dark(#333333,#F0F0F0);labelBackgroundColor=light-dark(#FFFFFF,#121212);strokeColor=light-dark(#333333,#F0F0F0);strokeWidth=1.25;align=center;verticalAlign=middle;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" edge="1" parent="1" source="run" target="pages">
             <mxGeometry relative="1" as="geometry">
           </mxGeometry>
           </mxCell>
