@@ -38,6 +38,18 @@ test("emphasis around a link holds runs of its own", () => {
   );
 });
 
+test("emphasis around an HTML link holds runs of its own", () => {
+  assert.equal(
+    linked('## **<a href="https://example.com/">API</a>** 문서'),
+    '<strong><a href="https://example.com/">API</a></strong>' + self(" 문서"),
+  );
+  assert.equal(
+    linked('## *<span lang="ko">앞 <a href="y.md">API</a> 뒤</span>* 문서'),
+    `<em><span lang="ko">${self("앞 ")}<a href="y.md">API</a>${self(" 뒤")}</span></em>` +
+      self(" 문서"),
+  );
+});
+
 test("an HTML element around a link keeps its tags", () => {
   assert.equal(
     linked(
