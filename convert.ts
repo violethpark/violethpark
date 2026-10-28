@@ -41,9 +41,9 @@ const UI: Record<Lang, Ui> = {
     close: "Close",
     skip: "Skip to content",
     theme: "Theme",
-    auto: "Auto",
-    light: "Light",
-    dark: "Dark",
+    auto: "Theme: Auto",
+    light: "Theme: Light",
+    dark: "Theme: Dark",
     section: "Section",
     subs: "Subsections",
     links: "Links",
@@ -55,9 +55,9 @@ const UI: Record<Lang, Ui> = {
     close: "닫기",
     skip: "본문으로 건너뛰기",
     theme: "테마",
-    auto: "자동",
-    light: "라이트",
-    dark: "다크",
+    auto: "테마: 자동",
+    light: "테마: 라이트",
+    dark: "테마: 다크",
     section: "절 정보",
     subs: "하위 항목",
     links: "링크",
@@ -69,9 +69,9 @@ const UI: Record<Lang, Ui> = {
     close: "閉じる",
     skip: "本文へスキップ",
     theme: "テーマ",
-    auto: "自動",
-    light: "ライト",
-    dark: "ダーク",
+    auto: "テーマ: 自動",
+    light: "テーマ: ライト",
+    dark: "テーマ: ダーク",
     section: "このセクション",
     subs: "小見出し",
     links: "リンク",
@@ -120,12 +120,15 @@ const LANGUAGES: readonly {
 ];
 
 // Links to the other CVs and the current one as text, each read by its full
-// name. build-site.ts turns the CV*.md links into the site's URLs.
-function langSwitch(lang: Lang, ui: Ui): string {
+// name. The bars show the short names; the contents drawer, which holds the
+// switch on phones (see style.css), has room for the full ones.
+// build-site.ts turns the CV*.md links into the site's URLs.
+function langSwitch(lang: Lang, ui: Ui, full = false): string {
   const items = LANGUAGES.map((l) => {
-    const text =
-      `<span aria-hidden="true">${l.short}</span>` +
-      `<span class="vh">${l.name}</span>`;
+    const text = full
+      ? l.name
+      : `<span aria-hidden="true">${l.short}</span>` +
+        `<span class="vh">${l.name}</span>`;
     const attributes = ` lang="${l.lang}" title="${l.name}"`;
     return l.lang === lang
       ? `<span aria-current="page"${attributes}>${text}</span>`
@@ -137,12 +140,11 @@ function langSwitch(lang: Lang, ui: Ui): string {
 function htmlTemplate(page: Page): string {
   const ui = UI[page.lang];
   const title = escapeHtml(page.title);
-  // The page script labels and shows it, "<name>: <theme>"; without the
-  // script the system theme applies and the button stays hidden.
+  // The page script labels and shows it; without the script the system
+  // theme applies and the button stays hidden.
   const themeButton =
-    `<button type="button" class="theme-toggle" hidden data-name="${ui.theme}" ` +
-    `data-auto="${ui.auto}" data-light="${ui.light}" data-dark="${ui.dark}">` +
-    `${ui.theme}</button>`;
+    `<button type="button" class="theme-toggle" hidden data-auto="${ui.auto}" ` +
+    `data-light="${ui.light}" data-dark="${ui.dark}">${ui.theme}</button>`;
   const controls = langSwitch(page.lang, ui) + themeButton;
   return `<!DOCTYPE html>
 <html lang="${page.lang}" class="has-toc has-panel">
@@ -157,7 +159,7 @@ function htmlTemplate(page: Page): string {
   <a class="skip" href="#cv.main">${ui.skip}</a>
   <header class="bar"><button type="button" class="toc-open" popovertarget="cv.toc">${ui.contents}</button><span class="bar-title">${title}</span>${controls}</header>
   <div class="layout">
-    ${tocHtml(page.sections, ui)}
+    ${tocHtml(page.sections, ui, langSwitch(page.lang, ui, true))}
     <main id="cv.main">
       <div class="main-bar"><span class="bar-title">${title}</span>${controls}</div>
       ${page.body}
@@ -173,7 +175,7 @@ const anchorLink = (h: Heading) =>
   `<a href="#${escapeHtml(h.id)}">${escapeHtml(h.text)}</a>`;
 
 // The contents list the h2 and h3 headings.
-function tocHtml(sections: Section[], ui: Ui): string {
+function tocHtml(sections: Section[], ui: Ui, languages: string): string {
   const items = sections.map((s) => {
     const subs = s.subs.filter((h) => h.depth === 3);
     return (
@@ -188,7 +190,7 @@ function tocHtml(sections: Section[], ui: Ui): string {
     `<nav id="cv.toc" class="toc" popover aria-label="${ui.contents}">` +
     `<div class="toc-head"><span>${ui.contents}</span><button type="button" ` +
     `class="toc-close" popovertarget="cv.toc" popovertargetaction="hide">` +
-    `${ui.close}</button></div><ol>${items.join("")}</ol></nav>`
+    `${ui.close}</button></div>${languages}<ol>${items.join("")}</ol></nav>`
   );
 }
 

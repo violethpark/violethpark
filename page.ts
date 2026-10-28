@@ -24,8 +24,7 @@ export function enhance(): void {
   const root = document.documentElement;
   root.classList.add("js");
   // Auto (the system), light, dark, and around again. Each button carries
-  // its labels in the page's language (data-name, data-auto, data-light,
-  // data-dark).
+  // its labels in the page's language (data-auto, data-light, data-dark).
   const buttons = [
     ...document.querySelectorAll<HTMLButtonElement>(".theme-toggle"),
   ];
@@ -33,13 +32,9 @@ export function enhance(): void {
     root.dataset.theme === "light" || root.dataset.theme === "dark"
       ? root.dataset.theme
       : "auto";
-  // The name is its own element, so a phone can show only the theme.
   const label = () => {
     for (const button of buttons) {
-      const name = document.createElement("span");
-      name.className = "theme-name";
-      name.textContent = `${button.dataset.name ?? ""}: `;
-      button.replaceChildren(name, button.dataset[theme()] ?? theme());
+      button.textContent = button.dataset[theme()] ?? theme();
       button.hidden = false;
     }
   };
