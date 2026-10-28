@@ -36,8 +36,13 @@ function inlineTree(tokens: Token[]): InlineNode[] | null {
   return stack.length ? null : root;
 }
 
+// An emphasis's own tokens are not grouped yet, so an HTML <a> there is
+// still a bare open tag.
 const isLink = (n: InlineNode) =>
-  "open" in n ? /^<a[\s>]/i.test(n.open.raw.trim()) : n.type === "link";
+  /^<a[\s>]/i.test(
+    "open" in n ? n.open.raw.trim() : n.type === "html" ? n.raw.trim() : "",
+  ) ||
+  (!("open" in n) && n.type === "link");
 const hasLink = (n: InlineNode): boolean =>
   isLink(n) ||
   ("open" in n
