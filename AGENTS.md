@@ -28,6 +28,7 @@ violethpark/
 ├── CV*.html           # CV HTML 변환 결과 (convert.ts로 생성, 로컬 전용·gitignore)
 ├── style.css          # CV HTML용 스타일시트
 ├── convert.ts         # CV*.md → CV*.html 변환 스크립트 (node로 직접 실행)
+├── heading-link.ts    # 본문 제목의 자기 링크 (convert.ts가 사용, heading-link.test.ts로 검사)
 ├── page.ts            # CV HTML에 인라인하는 브라우저 스크립트 (테마, 현재 절)
 ├── build-site.ts      # CV*.html로 배포용 _site/ 구성 (npm run build-site)
 ├── subset-fonts.py    # 본문 글꼴을 사이트 글자로 서브셋 (build-site.ts가 실행)
@@ -101,7 +102,7 @@ violethpark/
   python3 -m venv .venv-fonts
   .venv-fonts/bin/pip install --require-hashes \
     -r requirements-fonts.txt -r requirements-dev.txt
-  npm run typecheck && npm run lint && npm run format:check
+  npm run typecheck && npm test && npm run lint && npm run format:check
   npm run pyright && npm run ruff
   ```
 

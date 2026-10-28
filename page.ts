@@ -17,8 +17,9 @@ export function applyTheme(): void {
   }
 }
 
-// At the end of <body>: the theme buttons, the current section in the table
-// of contents and the panel, and closing the contents drawer after a jump.
+// At the end of <body>: the theme buttons, the section buttons, the current
+// section in the table of contents and the panel, and closing the contents
+// drawer after a jump.
 export function enhance(): void {
   const root = document.documentElement;
   root.classList.add("js");
@@ -54,6 +55,20 @@ export function enhance(): void {
     });
   }
   label();
+  // Each section's button opens and closes what the panel would show.
+  for (const button of document.querySelectorAll<HTMLButtonElement>(
+    ".section-toggle",
+  )) {
+    const info = document.getElementById(
+      button.getAttribute("aria-controls") ?? "",
+    );
+    if (!info) continue;
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      info.hidden = !info.hidden;
+      button.setAttribute("aria-expanded", String(!info.hidden));
+    });
+  }
   const toc = document.getElementById("cv.toc");
   let section = "";
   const marks = [

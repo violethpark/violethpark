@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, basename, extname } from "node:path";
 import { Marked, type Token, type Tokens } from "marked";
+import { linkedHeading } from "./heading-link.ts";
 import { applyTheme, enhance } from "./page.ts";
 
 // ─── Configuration ───────────────────────────────────────────────
@@ -11,9 +12,10 @@ const FILE_PATTERN = /^CV.*\.md$/i;
 const LANGUAGE_LINK = /^CV(_\w+)?\.md$/i;
 const CSS_FILE = "style.css";
 
-// The layout follows violethpark/workspace plan-html (51087a6): contents on
-// the left, the current section's panel on the right, both narrowing to a
-// drawer and closed blocks on smaller screens (see style.css).
+// The layout follows violethpark/workspace plan-html (51087a6, with the
+// section buttons and heading links of violethpark/workspace#226): contents
+// on the left, the current section's panel on the right, narrowing to a
+// drawer and a button beside each h2 on smaller screens (see style.css).
 
 // ─── Page Text ───────────────────────────────────────────────────
 
@@ -171,8 +173,8 @@ function infoList(head: string, items: string[]): string {
   );
 }
 
-// What a section holds, shown in the panel and, on narrower screens, in a
-// closed block under its heading.
+// What a section holds, shown in the panel and, on narrower screens, under
+// its heading by the heading's button.
 function sectionInfo(s: Section, ui: Ui): string {
   return (
     infoList(ui.subs, s.subs.map(anchorLink)) +
@@ -182,20 +184,6 @@ function sectionInfo(s: Section, ui: Ui): string {
         (l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a>`,
       ),
     )
-  );
-}
-
-function sectionSummary(s: Section, ui: Ui): string {
-  const counts = [
-    [ui.subs, s.subs.length],
-    [ui.links, s.links.length],
-  ] as const;
-  return (
-    `${ui.section}: ` +
-    counts
-      .filter(([, n]) => n)
-      .map(([name, n]) => `${name} ${n}`)
-      .join(" · ")
   );
 }
 
@@ -349,15 +337,26 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
       },
       heading(token) {
         const id = ids.get(token);
-        const inner = this.parser.parseInline(token.tokens);
-        const html = `<h${token.depth}${id === undefined ? "" : ` id="${escapeHtml(id)}"`}>${inner}</h${token.depth}>\n`;
+        const render = (inline: Token[]) => this.parser.parseInline(inline);
+        const inner =
+          id !== undefined && token.depth >= 2 && token.depth <= 4
+            ? linkedHeading(token.tokens, `#${escapeHtml(id)}`, render)
+            : render(token.tokens);
+        const html = `<h${token.depth}${id === undefined ? "" : ` id="${escapeHtml(id)}"`}>${inner}</h${token.depth}>`;
         const s = sectionOf.get(token);
         const info = s ? sectionInfo(s, ui) : "";
-        if (!s || !info) return html;
+        if (!s || !info) return `${html}\n`;
+        // Below the panel's width the button opens what the panel would show.
+        // It sits outside the heading, which keeps the heading's name, and
+        // the page script shows it: without the script both stay hidden, and
+        // the contents and the text hold the same.
+        const sid = escapeHtml(s.id);
         return (
-          html +
-          `<details class="section-info"><summary>${sectionSummary(s, ui)}</summary>` +
-          `${info}</details>\n`
+          `<div class="section-head">${html}<button type="button" ` +
+          `class="section-toggle" aria-expanded="false" ` +
+          `aria-controls="cv.info.${sid}" aria-describedby="${sid}" hidden>` +
+          `${ui.section}</button></div>\n` +
+          `<div id="cv.info.${sid}" class="section-info" hidden>${info}</div>\n`
         );
       },
     },
