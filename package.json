@@ -5,13 +5,21 @@
   "type": "module",
   "scripts": {
     "convert": "node convert.ts",
-    "typecheck": "tsc"
+    "build-site": "node build-site.ts",
+    "typecheck": "tsc",
+    "lint": "tsc -p config/lint/tsconfig.json && config/lint/node_modules/.bin/eslint --flag unstable_native_nodejs_ts_config --max-warnings 0 --config config/lint/eslint.config.ts .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "pyright": "pyright",
+    "ruff": ".venv-fonts/bin/ruff check && .venv-fonts/bin/ruff format --check"
   },
   "devDependencies": {
-    "typescript": "^7.0.2",
-    "@types/node": "^24.19.2"
+    "@types/node": "24.19.2",
+    "prettier": "3.9.10",
+    "pyright": "1.1.414",
+    "typescript": "7.0.2"
   },
   "dependencies": {
-    "marked": "^18.1.2"
+    "marked": "18.1.2"
   }
 }

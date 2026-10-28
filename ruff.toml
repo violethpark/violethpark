@@ -1,0 +1,29 @@
+# Lint and format rules for subset-fonts.py and the fontTools stubs in
+# typings/. The rule list is violethpark/workspace .devcontainer/ruff.toml's,
+# explicit so a Ruff upgrade does not change it. Python 3.14 is the runner's
+# python3 (ubuntu-26.04), which deploy-cv.yml and check.yml use.
+target-version = "py314"
+line-length = 88
+# Python only: Ruff would also format code blocks in the CV and profile Markdown.
+include = ["*.py", "*.pyi"]
+
+[lint]
+select = [
+  "A",    # builtin shadowing
+  "ANN",  # annotations (Pyright strict checks the types)
+  "B",    # bug-prone patterns
+  "BLE",  # blind except
+  "C4",   # comprehensions
+  "E",    # pycodestyle errors
+  "ERA",  # commented-out code
+  "F",    # pyflakes
+  "I",    # import order
+  "PIE",  # unnecessary code
+  "PLE",  # pylint errors
+  "PLW",  # pylint warnings
+  "RET",  # return consistency
+  "RUF",  # Ruff-specific
+  "SIM",  # simplifications
+  "UP",   # pyupgrade for py314
+  "W",    # pycodestyle warnings
+]

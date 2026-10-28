@@ -119,14 +119,14 @@
   - `main` 브랜치 push에서 감시 경로(`deploy-cv.yml`의 `paths`)가 바뀌면 자동 실행된다.
     Actions 화면에서 수동 실행(`workflow_dispatch`)도 할 수 있다.
   - `npm ci`, `npm run typecheck`, `npm run convert`로 CV*.html을 만든 뒤
-    `build-site.sh`가 CV.html →
+    `build-site.ts`가 CV.html →
     `/index.html`과 `/en/index.html`, CV_ko.html → `/ko/index.html`,
     CV_jp.html → `/jp/index.html`로 복사한다.
   - 언어 간 교차 링크(`CV*.md`)를 `/en/`, `/ko/`, `/jp/`로 바꿔 쓴다.
   - `images/`는 각 경로에, `style.css`와 `fonts/`는 루트에 한 벌 배포한다. 본문 글꼴
     (IBM Plex Sans)은 `subset-fonts.py`가 사이트 글자로 잘라 `CV Sans`로 둔다.
   - 로컬 확인: `python3 -m venv .venv-fonts && .venv-fonts/bin/pip install --require-hashes -r requirements-fonts.txt`
-    한 번, 그다음 `npm run convert && PYTHON=.venv-fonts/bin/python bash build-site.sh`,
+    한 번, 그다음 `npm run convert && PYTHON=.venv-fonts/bin/python npm run build-site`,
     `python3 -m http.server -d _site`.
   - GitHub 저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 한다.
   - 커스텀 도메인: `about.violethpark.com` (워크플로가 `CNAME`을 쓴다).

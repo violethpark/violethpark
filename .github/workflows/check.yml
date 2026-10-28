@@ -1,0 +1,68 @@
+name: Check
+
+# Type checks, lint, and format of the build scripts and their settings:
+# TypeScript (convert.ts, page.ts, build-site.ts) and subset-fonts.py, then a
+# build of the site. The runner's python3 (3.14 on ubuntu-26.04) is the
+# version pyrightconfig.json and ruff.toml target.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 24.22.1
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            config/lint/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm ci --prefix config/lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format
+        run: npm run format:check
+
+      # Pyright reads fontTools from this venv (pyrightconfig.json).
+      - name: Install fontTools and Ruff
+        run: |
+          python3 -m venv .venv-fonts
+          .venv-fonts/bin/pip install --require-hashes -r requirements-fonts.txt -r requirements-dev.txt
+
+      - name: Pyright
+        run: npm run pyright
+
+      - name: Ruff lint
+        run: .venv-fonts/bin/ruff check
+
+      - name: Ruff format
+        run: .venv-fonts/bin/ruff format --check
+
+      # The site itself, so a break in convert.ts, build-site.ts, or
+      # subset-fonts.py shows here and not only in deploy-cv.yml after a merge.
+      - name: Build the site
+        run: |
+          npm run convert
+          PYTHON="$PWD/.venv-fonts/bin/python" npm run build-site -- "$RUNNER_TEMP/site"

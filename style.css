@@ -15,7 +15,7 @@
    Sans: the site serves the cuts to its characters, and as Plex is a
    Reserved Font Name the cuts carry that name. Here the url()s name the
    originals, for the CV*.html that npm run convert writes next to this
-   file; build-site.sh points the site's copy at the cuts it makes with
+   file; build-site.ts points the site's copy at the cuts it makes with
    subset-fonts.py. Code is Sarasa Mono Slab K, J under lang="ja", without
    ligatures. Each face tries the installed font first, then the file in
    fonts/. A Regular face's full name is its family name. */

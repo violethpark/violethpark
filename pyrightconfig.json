@@ -1,0 +1,11 @@
+{
+  "include": ["subset-fonts.py"],
+  "exclude": ["**/node_modules", "**/__pycache__"],
+  "venvPath": ".",
+  "venv": ".venv-fonts",
+  "typeCheckingMode": "strict",
+  "pythonVersion": "3.14",
+  "pythonPlatform": "Linux",
+  "reportMissingModuleSource": "error",
+  "reportUnnecessaryTypeIgnoreComment": "error"
+}
