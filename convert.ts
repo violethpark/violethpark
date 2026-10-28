@@ -105,7 +105,37 @@ interface Page {
   lang: Lang;
   body: string;
   sections: Section[];
-  languages: Link[];
+}
+
+// The switch beside the theme button: every CV, in this order, by the short
+// name its own readers know it by.
+const LANGUAGES: readonly {
+  lang: Lang;
+  file: string;
+  short: string;
+  name: string;
+}[] = [
+  { lang: "en", file: "CV.md", short: "EN", name: "English" },
+  { lang: "ko", file: "CV_ko.md", short: "한", name: "한국어" },
+  { lang: "ja", file: "CV_jp.md", short: "日", name: "日本語" },
+];
+
+// Links to the other CVs and the current one as text, each read by its full
+// name. The bars show the short names; the contents drawer, which holds the
+// switch on phones (see style.css), has room for the full ones.
+// build-site.ts turns the CV*.md links into the site's URLs.
+function langSwitch(lang: Lang, ui: Ui, full = false): string {
+  const items = LANGUAGES.map((l) => {
+    const text = full
+      ? l.name
+      : `<span aria-hidden="true">${l.short}</span>` +
+        `<span class="vh">${l.name}</span>`;
+    const attributes = ` lang="${l.lang}" title="${l.name}"`;
+    return l.lang === lang
+      ? `<span aria-current="page"${attributes}>${text}</span>`
+      : `<a href="${l.file}" hreflang="${l.lang}"${attributes}>${text}</a>`;
+  });
+  return `<nav class="lang-switch" aria-label="${ui.languages}">${items.join("")}</nav>`;
 }
 
 function htmlTemplate(page: Page): string {
@@ -116,6 +146,7 @@ function htmlTemplate(page: Page): string {
   const themeButton =
     `<button type="button" class="theme-toggle" hidden data-auto="${ui.auto}" ` +
     `data-light="${ui.light}" data-dark="${ui.dark}">${ui.theme}</button>`;
+  const controls = langSwitch(page.lang, ui) + themeButton;
   return `<!DOCTYPE html>
 <html lang="${page.lang}" class="has-toc has-panel">
 <head>
@@ -127,11 +158,11 @@ function htmlTemplate(page: Page): string {
 </head>
 <body>
   <a class="skip" href="#cv.main">${ui.skip}</a>
-  <header class="bar"><button type="button" class="toc-open" popovertarget="cv.toc">${ui.contents}</button><span class="bar-title">${title}</span>${themeButton}</header>
+  <header class="bar"><button type="button" class="toc-open" popovertarget="cv.toc">${ui.contents}</button><span class="bar-title">${title}</span>${controls}</header>
   <div class="layout">
-    ${tocHtml(page.sections, ui)}
+    ${tocHtml(page.sections, ui, langSwitch(page.lang, ui, true))}
     <main id="cv.main">
-      <div class="main-bar"><span class="bar-title">${title}</span>${themeButton}</div>
+      <div class="main-bar"><span class="bar-title">${title}</span>${controls}</div>
       ${page.body}
     </main>
     ${panelHtml(page, ui)}
@@ -145,7 +176,7 @@ const anchorLink = (h: Heading) =>
   `<a href="#${escapeHtml(h.id)}">${escapeHtml(h.text)}</a>`;
 
 // The contents list the h2 and h3 headings.
-function tocHtml(sections: Section[], ui: Ui): string {
+function tocHtml(sections: Section[], ui: Ui, languages: string): string {
   const items = sections.map((s) => {
     const subs = s.subs.filter((h) => h.depth === 3);
     return (
@@ -160,7 +191,7 @@ function tocHtml(sections: Section[], ui: Ui): string {
     `<nav id="cv.toc" class="toc" popover aria-label="${ui.contents}">` +
     `<div class="toc-head"><span>${ui.contents}</span><button type="button" ` +
     `class="toc-close" popovertarget="cv.toc" popovertargetaction="hide">` +
-    `${ui.close}</button></div><ol>${items.join("")}</ol></nav>`
+    `${ui.close}</button></div>${languages}<ol>${items.join("")}</ol></nav>`
   );
 }
 
@@ -187,20 +218,8 @@ function sectionInfo(s: Section, ui: Ui): string {
   );
 }
 
-// The other languages on top, then one block per h2 that the page script
-// shows while its section is current.
+// One block per h2 that the page script shows while its section is current.
 function panelHtml(page: Page, ui: Ui): string {
-  const languages = page.languages.length
-    ? `<p class="panel-page" aria-label="${ui.languages}">` +
-      page.languages
-        .map(
-          (l) =>
-            `<a href="${escapeHtml(l.href)}"${languageAttributes(l.href)}>` +
-            `${escapeHtml(l.text)}</a>`,
-        )
-        .join(" · ") +
-      "</p>"
-    : "";
   const sections = page.sections.map(
     (s) =>
       `<section class="panel-section" data-section="${escapeHtml(s.id)}">` +
@@ -210,7 +229,6 @@ function panelHtml(page: Page, ui: Ui): string {
   );
   return (
     `<aside class="panel" aria-label="${ui.section}">` +
-    languages +
     sections.join("") +
     "</aside>"
   );
@@ -291,12 +309,20 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
   const marked = new Marked();
   const tokens = marked.lexer(markdown);
 
-  // Name every heading and gather each h2's subheadings and links; the
-  // links before the first h2 that point at another CV are the languages.
+  // The line of links to the other CVs at the top of each CV.md is for
+  // GitHub; the page has the language switch instead.
+  const first = tokens.findIndex(
+    (t) => t.type === "heading" && (t as Tokens.Heading).depth === 2,
+  );
+  const line = tokens
+    .slice(0, first < 0 ? undefined : first)
+    .findIndex(isLanguageLine);
+  if (line >= 0) tokens.splice(line, 1);
+
+  // Name every heading and gather each h2's subheadings and links.
   const slug = slugger();
   const ids = new Map<Tokens.Heading, string>();
   const sections: Section[] = [];
-  const languages: Link[] = [];
   const sectionOf = new Map<Tokens.Heading, Section>();
   let section: Section | undefined;
   for (const token of tokens) {
@@ -318,9 +344,7 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
     marked.walkTokens([token], (t) => {
       if (t.type !== "link") return;
       const link = { href: t.href, text: plainText(t.tokens ?? []) || t.href };
-      if (!current) {
-        if (LANGUAGE_LINK.test(link.href)) languages.push(link);
-      } else if (!current.links.some((l) => l.href === link.href)) {
+      if (current && !current.links.some((l) => l.href === link.href)) {
         current.links.push(link);
       }
     });
@@ -364,8 +388,24 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
   const body = marked.parser(tokens);
 
   const title = extractTitle(markdown) ?? basename(srcPath, extname(srcPath));
-  const html = htmlTemplate({ title, lang, body, sections, languages });
+  const html = htmlTemplate({ title, lang, body, sections });
   await writeFile(outPath, html, "utf-8");
+}
+
+// A paragraph of nothing but links to CVs and separators, such as
+// `*[한국어](CV_ko.md) | [日本語](CV_jp.md)*`.
+function isLanguageLine(token: Token): boolean {
+  if (token.type !== "paragraph") return false;
+  let links = 0;
+  const rest = token.raw.replace(
+    /\[[^\]]*\]\(([^)\s]+)\)/g,
+    (link: string, href: string) => {
+      if (!LANGUAGE_LINK.test(href)) return link;
+      links++;
+      return "";
+    },
+  );
+  return links > 0 && /^[\s*_|·/,]*$/.test(rest);
 }
 
 /** Extract the first `# Heading` as the document title. */

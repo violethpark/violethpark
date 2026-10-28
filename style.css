@@ -7,7 +7,8 @@
    the text from 60rem, and the section panel as a third column from 87.5rem.
    Below that a button beside each h2 opens its panel section under the
    heading (as plan-html from violethpark/workspace#226). The title and theme button stay in view: in a bar over the page
-   below 60rem, at the top of the text from there.
+   below 60rem, at the top of the text from there. The language switch sits
+   beside the theme button, or at the top of the contents drawer up to 30rem.
 
    Text is IBM Plex Sans: its Latin cut first, then the KR cut for Hangul
    (the same Latin, but few accented letters); under lang="ja" the JP cut,
@@ -376,8 +377,65 @@ main img[align="right"] {
 .main-bar button {
   flex: none;
 }
+/* The CVs in their languages beside the theme button: one bordered group
+   like the buttons, the current language inverted. */
+.lang-switch {
+  display: flex;
+  flex: none;
+  border: 0.125rem solid var(--border);
+  box-shadow: 0.125rem 0.125rem 0 var(--shadow);
+  background: var(--paper);
+}
+.lang-switch > * {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: 2.5rem;
+  padding: 0 0.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+.lang-switch > * + * {
+  border-left: 0.0625rem solid var(--border);
+}
+.lang-switch a:hover,
+.lang-switch a:focus-visible {
+  background: var(--hover);
+  text-decoration: underline;
+}
+.lang-switch [aria-current] {
+  background: var(--heading);
+  color: var(--paper);
+  font-weight: 700;
+}
+/* Read by screen readers, not drawn. */
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .main-bar {
   display: none;
+}
+/* The drawer's copy, by full name, for phones (below). */
+.toc .lang-switch {
+  display: none;
+  margin: 0 0 0.75rem;
+}
+/* Over the contents link style. */
+.toc .lang-switch > * {
+  display: flex;
+  flex: 1;
+  padding: 0 0.5rem;
+  border-left: 0;
+}
+.toc .lang-switch > * + * {
+  border-left: 0.0625rem solid var(--border);
 }
 .bar-title {
   flex: 1;
@@ -546,6 +604,14 @@ main img[align="right"] {
   }
 }
 @media (max-width: 30rem) {
+  /* No room in the bar beside the contents and theme buttons and the
+     title: the language switch moves to the top of the contents drawer. */
+  .bar .lang-switch {
+    display: none;
+  }
+  .toc .lang-switch {
+    display: flex;
+  }
   .layout {
     padding: 0.5rem 0.25rem 2rem;
   }
@@ -656,6 +722,7 @@ main img[align="right"] {
   .has-panel .panel,
   .section-toggle,
   .section-info,
+  .lang-switch,
   .theme-toggle {
     display: none;
   }

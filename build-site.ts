@@ -106,7 +106,7 @@ function build(site: string): void {
     );
   }
 
-  // Cross-language links (.md → clean URLs), in the text and in the panel.
+  // Cross-language links (.md → clean URLs), in the language switches.
   for (const [dir] of pages) {
     edit(`${site}/${dir}/index.html`, (text) =>
       text

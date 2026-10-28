@@ -14,7 +14,7 @@ GitHub 프로필 페이지와 CV 사이트(about.violethpark.com)가 어떤 파�
 | `RESUME*.md` | 원본 이력서(한국어). gitignore 대상이라 로컬에만 있다 | `CV.md`의 사실 근거 |
 | [CV.md](CV.md), [CV_ko.md](CV_ko.md), [CV_jp.md](CV_jp.md) | CV 원문(영어 기본, 한국어, 일본어) | `CV*.html`, CV 사이트 |
 | [README.md](README.md), [README_ko.md](README_ko.md), [README_jp.md](README_jp.md) | CV 요약 프로필 | github.com/violethpark (`README.md`). 사이트에는 들어가지 않는다 |
-| [convert.ts](convert.ts) | `CV*.md`를 marked로 `CV*.html`로 변환(`npm run convert`). 제목 id, 목차, 절 정보 패널, 언어별 UI 글자를 만든다 | `CV*.html` |
+| [convert.ts](convert.ts) | `CV*.md`를 marked로 `CV*.html`로 변환(`npm run convert`). 제목 id·자기 링크, 목차, 절 정보 패널과 버튼, 테마 버튼 옆 언어 전환(`EN · 한 · 日`, 30rem 이하에서는 목차 서랍 맨 위), 언어별 UI 글자를 만든다. `CV*.md` 맨 위 언어 줄은 GitHub용이라 HTML에는 그리지 않는다 | `CV*.html` |
 | [heading-link.ts](heading-link.ts) | 본문 제목 h2~h4의 자기 링크. 제목 안 링크와 그 링크를 감싼 요소는 그대로 두고 밖의 구간만 감싼다. `convert.ts`가 쓰고 `npm test`(`heading-link.test.ts`)가 검사한다 | `CV*.html`의 제목 |
 | [page.ts](page.ts) | 테마 버튼과 현재 절 표시. `convert.ts`가 각 페이지에 인라인한다 | `CV*.html` 안의 스크립트 |
 | [style.css](style.css), [fonts/](fonts/fonts.json), [images/](images/) | CV HTML의 스타일(라이트·고대비 다크, 반응형 3단), 웹폰트 원본(IBM Plex Sans, Sarasa Mono Slab), 이미지 | 사이트에 복사된다. `style.css`·`fonts/`는 루트 한 벌. 본문 글꼴은 잘라서(`subset-fonts.py`) 둔다 |
