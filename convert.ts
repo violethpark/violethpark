@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, basename, extname } from "node:path";
 import { Marked, type Token, type Tokens } from "marked";
+import { linkedHeading } from "./heading-link.ts";
 import { applyTheme, enhance } from "./page.ts";
 
 // ─── Configuration ───────────────────────────────────────────────
@@ -339,7 +340,7 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
         const render = (inline: Token[]) => this.parser.parseInline(inline);
         const inner =
           id !== undefined && token.depth >= 2 && token.depth <= 4
-            ? linkedHeading(token.tokens, id, render)
+            ? linkedHeading(token.tokens, `#${escapeHtml(id)}`, render)
             : render(token.tokens);
         const html = `<h${token.depth}${id === undefined ? "" : ` id="${escapeHtml(id)}"`}>${inner}</h${token.depth}>`;
         const s = sectionOf.get(token);
@@ -365,43 +366,6 @@ async function convertFile(srcPath: string, outPath: string): Promise<void> {
   const title = extractTitle(markdown) ?? basename(srcPath, extname(srcPath));
   const html = htmlTemplate({ title, lang, body, sections, languages });
   await writeFile(outPath, html, "utf-8");
-}
-
-// The headings the contents and the panel list link to themselves, as their
-// entries there do (after violethpark/workspace plan-html). A heading's own
-// links stay as they are, between the linked runs of its text: links may
-// not nest.
-function linkedHeading(
-  tokens: Token[],
-  id: string,
-  render: (inline: Token[]) => string,
-): string {
-  const parts: string[] = [];
-  let run: Token[] = [];
-  let depth = 0;
-  const flush = () => {
-    if (!run.length) return;
-    const html = render(run);
-    parts.push(
-      run.some((t) => t.type !== "text" || t.raw.trim())
-        ? `<a href="#${escapeHtml(id)}" class="heading-link">${html}</a>`
-        : html,
-    );
-    run = [];
-  };
-  for (const t of tokens) {
-    const html = t.type === "html" ? t.raw : "";
-    if (/^<a[\s>]/i.test(html)) depth++;
-    if (t.type === "link" || depth) {
-      flush();
-      parts.push(render([t]));
-    } else {
-      run.push(t);
-    }
-    if (/^<\/a\s*>/i.test(html)) depth = Math.max(0, depth - 1);
-  }
-  flush();
-  return parts.join("");
 }
 
 /** Extract the first `# Heading` as the document title. */

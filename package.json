@@ -6,6 +6,7 @@
   "scripts": {
     "convert": "node convert.ts",
     "build-site": "node build-site.ts",
+    "test": "node --test heading-link.test.ts",
     "typecheck": "tsc",
     "lint": "tsc -p config/lint/tsconfig.json && config/lint/node_modules/.bin/eslint --flag unstable_native_nodejs_ts_config --max-warnings 0 --config config/lint/eslint.config.ts .",
     "format": "prettier --write .",
