@@ -2,7 +2,7 @@ name: Check
 
 # Type checks, lint, and format of the build scripts and their settings:
 # TypeScript (convert.ts, page.ts, build-site.ts) and subset-fonts.py, then a
-# build of the site. The runner's python3 (3.12 on ubuntu-24.04) is the
+# build of the site. The runner's python3 (3.14 on ubuntu-26.04) is the
 # version pyrightconfig.json and ruff.toml target.
 on:
   pull_request:
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 15
     steps:
       - name: Checkout
@@ -38,6 +38,9 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Test
+        run: npm test
 
       - name: Lint
         run: npm run lint
