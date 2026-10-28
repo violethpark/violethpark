@@ -1,5 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>violethpark/renovate-config"],
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "description": "The Node.js types follow the workflows' node-version (24); raise both together by hand.",
+      "matchManagers": ["npm"],
+      "matchDepNames": ["@types/node"],
+      "allowedVersions": "<25"
+    }
+  ]
 }
