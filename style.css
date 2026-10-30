@@ -221,6 +221,9 @@ main h1 {
   font-size: 1.8rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  /* A title too long for the side of the photo (the Japanese one) breaks
+     into even lines, not one word under the rest. */
+  text-wrap: balance;
 }
 main h2 {
   margin: 2rem 0 0.8rem;
