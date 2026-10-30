@@ -221,6 +221,9 @@ main h1 {
   font-size: 1.8rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  /* A title too long for the side of the photo (the Japanese one) breaks
+     into even lines, not one word under the rest. */
+  text-wrap: balance;
 }
 main h2 {
   margin: 2rem 0 0.8rem;
@@ -350,6 +353,13 @@ main img {
 main img[align="right"] {
   margin: 0 0 1rem 1.5rem;
 }
+/* The title and the quote under it stand beside the photo, not under it:
+   their rule and shading would run behind the photo and show below it when
+   they outgrow it, as the long Japanese title wraps to two lines. */
+main h1,
+main blockquote {
+  display: flow-root;
+}
 
 .skip {
   position: absolute;
@@ -376,6 +386,37 @@ main img[align="right"] {
 .bar button,
 .main-bar button {
   flex: none;
+}
+/* Square buttons that show an icon and keep their names as hidden text
+   (convert.ts). On the main bar the theme button names the theme beside
+   its icon. */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 2.75rem;
+  padding: 0;
+}
+.icon-button[hidden] {
+  display: none;
+}
+.main-bar .icon-button {
+  padding: 0 0.875rem 0 0.75rem;
+}
+.icon {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+/* The icon of the theme in use. */
+.theme-toggle .icon {
+  display: none;
+}
+:root:not([data-theme]) .theme-toggle .icon-auto,
+:root[data-theme="light"] .theme-toggle .icon-light,
+:root[data-theme="dark"] .theme-toggle .icon-dark {
+  display: block;
 }
 /* The CVs in their languages beside the theme button: one bordered group
    like the buttons, the current language inverted. */
@@ -411,7 +452,8 @@ main img[align="right"] {
   font-weight: 700;
 }
 /* Read by screen readers, not drawn. */
-.vh {
+.vh,
+.bar .theme-label {
   position: absolute;
   width: 1px;
   height: 1px;

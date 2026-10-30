@@ -138,14 +138,45 @@ function langSwitch(lang: Lang, ui: Ui, full = false): string {
   return `<nav class="lang-switch" aria-label="${ui.languages}">${items.join("")}</nav>`;
 }
 
+// The buttons draw icons in the text colour and keep their names as text,
+// read but not drawn (.vh) or, on the wide main bar, beside the theme icon.
+// SVG, not symbols such as ☰: the site's fonts hold only its own letters.
+const icon = (name: string, shape: string) =>
+  `<svg class="icon icon-${name}" viewBox="0 0 24 24" width="20" height="20" ` +
+  `fill="none" stroke="currentColor" stroke-width="2" ` +
+  `stroke-linecap="square" aria-hidden="true">${shape}</svg>`;
+
+const ICONS = {
+  menu: icon("menu", '<path d="M4 6h16M4 12h16M4 18h16"/>'),
+  close: icon("close", '<path d="M6 6l12 12M18 6L6 18"/>'),
+  // The system's choice: half light, half dark.
+  auto: icon(
+    "auto",
+    '<circle cx="12" cy="12" r="8"/>' +
+      '<path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/>',
+  ),
+  light: icon(
+    "light",
+    '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2' +
+      'M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  ),
+  dark: icon(
+    "dark",
+    '<path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z"/>',
+  ),
+};
+
 function htmlTemplate(page: Page): string {
   const ui = UI[page.lang];
   const title = escapeHtml(page.title);
-  // The page script labels and shows it; without the script the system
-  // theme applies and the button stays hidden.
+  // It shows the icon of the theme in use (see style.css). The page script
+  // names and shows it; without the script the system theme applies and the
+  // button stays hidden.
   const themeButton =
-    `<button type="button" class="theme-toggle" hidden data-auto="${ui.auto}" ` +
-    `data-light="${ui.light}" data-dark="${ui.dark}">${ui.theme}</button>`;
+    `<button type="button" class="theme-toggle icon-button" hidden ` +
+    `data-auto="${ui.auto}" data-light="${ui.light}" data-dark="${ui.dark}">` +
+    `${ICONS.auto}${ICONS.light}${ICONS.dark}` +
+    `<span class="theme-label">${ui.theme}</span></button>`;
   const controls = langSwitch(page.lang, ui) + themeButton;
   return `<!DOCTYPE html>
 <html lang="${page.lang}" class="has-toc has-panel">
@@ -158,7 +189,7 @@ function htmlTemplate(page: Page): string {
 </head>
 <body>
   <a class="skip" href="#cv.main">${ui.skip}</a>
-  <header class="bar"><button type="button" class="toc-open" popovertarget="cv.toc">${ui.contents}</button><span class="bar-title">${title}</span>${controls}</header>
+  <header class="bar"><button type="button" class="toc-open icon-button" popovertarget="cv.toc" title="${ui.contents}">${ICONS.menu}<span class="vh">${ui.contents}</span></button><span class="bar-title">${title}</span>${controls}</header>
   <div class="layout">
     ${tocHtml(page.sections, ui, langSwitch(page.lang, ui, true))}
     <main id="cv.main">
@@ -190,8 +221,10 @@ function tocHtml(sections: Section[], ui: Ui, languages: string): string {
   return (
     `<nav id="cv.toc" class="toc" popover aria-label="${ui.contents}">` +
     `<div class="toc-head"><span>${ui.contents}</span><button type="button" ` +
-    `class="toc-close" popovertarget="cv.toc" popovertargetaction="hide">` +
-    `${ui.close}</button></div>${languages}<ol>${items.join("")}</ol></nav>`
+    `class="toc-close icon-button" popovertarget="cv.toc" ` +
+    `popovertargetaction="hide" title="${ui.close}">${ICONS.close}` +
+    `<span class="vh">${ui.close}</span></button></div>${languages}` +
+    `<ol>${items.join("")}</ol></nav>`
   );
 }
 

@@ -24,7 +24,8 @@ export function enhance(): void {
   const root = document.documentElement;
   root.classList.add("js");
   // Auto (the system), light, dark, and around again. Each button carries
-  // its labels in the page's language (data-auto, data-light, data-dark).
+  // its labels in the page's language (data-auto, data-light, data-dark);
+  // style.css picks its icon from the root's data-theme.
   const buttons = [
     ...document.querySelectorAll<HTMLButtonElement>(".theme-toggle"),
   ];
@@ -34,7 +35,11 @@ export function enhance(): void {
       : "auto";
   const label = () => {
     for (const button of buttons) {
-      button.textContent = button.dataset[theme()] ?? theme();
+      const text = button.dataset[theme()] ?? theme();
+      const name = button.querySelector(".theme-label");
+      if (name) name.textContent = text;
+      // The bar shows the icon alone; a pointer still finds the name.
+      button.title = text;
       button.hidden = false;
     }
   };
