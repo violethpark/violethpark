@@ -350,6 +350,13 @@ main img {
 main img[align="right"] {
   margin: 0 0 1rem 1.5rem;
 }
+/* The title and the quote under it stand beside the photo, not under it:
+   their rule and shading would run behind the photo and show below it when
+   they outgrow it, as the long Japanese title wraps to two lines. */
+main h1,
+main blockquote {
+  display: flow-root;
+}
 
 .skip {
   position: absolute;
