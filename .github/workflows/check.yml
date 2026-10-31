@@ -2,8 +2,9 @@ name: Check
 
 # Type checks, lint, and format of the build scripts and their settings:
 # TypeScript (convert.ts, page.ts, build-site.ts) and subset-fonts.py, then a
-# build of the site. The runner's python3 (3.14 on ubuntu-26.04) is the
-# version pyrightconfig.json and ruff.toml target.
+# build of the site. The job runs in a pinned Debian container; uv installs
+# the Python that pyrightconfig.json and ruff.toml target (Debian's is 3.13),
+# the python-build-standalone build violethpark/workspace's Dev Container uses.
 on:
   pull_request:
   push:
@@ -12,11 +13,21 @@ on:
 permissions:
   contents: read
 
+env:
+  # renovate: datasource=python-version depName=python
+  PYTHON_VERSION: 3.14.10
+
 jobs:
   check:
     runs-on: ubuntu-26.04
     timeout-minutes: 15
+    container: debian:13.7-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31
     steps:
+      - name: Debian packages
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends ca-certificates git
+
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -48,10 +59,16 @@ jobs:
       - name: Format
         run: npm run format:check
 
+      - name: Setup uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10
+        with:
+          version: 0.13.6
+
       # Pyright reads fontTools from this venv (pyrightconfig.json).
       - name: Install fontTools and Ruff
         run: |
-          python3 -m venv .venv-fonts
+          uv python install "${PYTHON_VERSION}"
+          "$(uv python find "${PYTHON_VERSION}")" -m venv .venv-fonts
           .venv-fonts/bin/pip install --require-hashes -r requirements-fonts.txt -r requirements-dev.txt
 
       - name: Pyright

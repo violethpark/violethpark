@@ -25,6 +25,10 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  # renovate: datasource=python-version depName=python
+  PYTHON_VERSION: 3.14.10
+
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -32,11 +36,18 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-26.04
+    # The same pinned Debian container and Python as check.yml.
+    container: debian:13.7-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Debian packages
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends ca-certificates git
+
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -55,9 +66,15 @@ jobs:
       - name: Convert CV*.md → CV*.html
         run: npm run convert
 
+      - name: Setup uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10
+        with:
+          version: 0.13.6
+
       - name: Install the font subsetter
         run: |
-          python3 -m venv "$RUNNER_TEMP/fonts"
+          uv python install "${PYTHON_VERSION}"
+          "$(uv python find "${PYTHON_VERSION}")" -m venv "$RUNNER_TEMP/fonts"
           "$RUNNER_TEMP/fonts/bin/pip" install --require-hashes -r requirements-fonts.txt
 
       - name: Prepare deployment directory
