@@ -96,6 +96,10 @@ violethpark/
 - 파일 수정 시 변경 사유를 간단히 기록한다.
 - 스크립트와 설정을 고치면 `check.yml`과 같은 검사를 오류·경고 없이 통과시킨다.
   규칙을 낮추거나 무시 주석(`eslint-disable`, `# type: ignore`, `# noqa` 등)을 달지 않고 코드를 고친다.
+- 직접 작성하는 실행 코드는 TypeScript(`.ts`)로만 쓴다. JavaScript는 Node가 타입을 지워 메모리에서 실행하는 코드와
+  `convert.ts`가 `page.ts`의 함수를 `String(fn)`으로 넣은 `CV*.html` 안에만 있고, Git에 넣지 않는다.
+  `check.yml`은 추적하는 `.js`·`.mjs`·`.cjs`·`.jsx`가 있으면 실패한다. 외부 배포물을 추적해야 하면
+  파일 이름을 적은 허용 목록으로만 열고 와일드카드 예외는 두지 않는다.
 
   ```bash
   npm ci && npm ci --prefix config/lint
