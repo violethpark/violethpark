@@ -33,6 +33,22 @@ jobs:
         with:
           persist-credentials: false
 
+      # The scripts are TypeScript only (AGENTS.md): JavaScript exists only as
+      # Node's type-stripped code and the functions page.ts inlines into
+      # CV*.html, never as a tracked file. tsc (no allowJs) and ESLint
+      # (**/*.ts) skip a .js file, so count them here. A git failure fails the
+      # step instead of reading as an empty list. The container runs as root
+      # and the checkout belongs to the runner user, so git needs this
+      # directory as safe.directory; -c keeps it to this one command.
+      - name: No tracked JavaScript
+        run: |
+          js="$(git -c safe.directory="$PWD" ls-files -- '*.js' '*.mjs' '*.cjs' '*.jsx')"
+          if [ -n "$js" ]; then
+            printf '%s\n' "$js"
+            echo "::error::Tracked JavaScript files; write them in TypeScript (AGENTS.md)."
+            exit 1
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
