@@ -42,7 +42,7 @@ export default defineConfig(
         },
         {
           selector:
-            "Program > :not(ImportDeclaration, ExportNamedDeclaration, TSTypeAliasDeclaration, TSInterfaceDeclaration)",
+            "Program > :not(ImportDeclaration, ExportNamedDeclaration, ExportAllDeclaration[exportKind='type'], TSTypeAliasDeclaration, TSInterfaceDeclaration)",
           message: `${inlined}; keep only \`export function\` and type declarations at the top level.`,
         },
       ],
