@@ -110,6 +110,8 @@ violethpark/
   npm run pyright && npm run ruff
   ```
 
+- `String(fn)`으로 넣는 `page.ts` 함수의 문법 상한은 tsconfig `target`이다. Node는 타입만 지우고 문법을 낮추지 않는다.
+
 ---
 
 ## 작업 순서 참조
