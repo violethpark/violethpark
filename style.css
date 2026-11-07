@@ -9,6 +9,8 @@
    heading (as plan-html from violethpark/workspace#226). The title and theme button stay in view: in a bar over the page
    below 60rem, at the top of the text from there. The language switch sits
    beside the theme button, or at the top of the contents drawer up to 30rem.
+   Paper gets the full-size layout without the bars and buttons; the print
+   rules follow plan-page.css 81bd7b5 (workspace#403).
 
    Text is IBM Plex Sans: its Latin cut first, then the KR cut for Hangul
    (the same Latin, but few accented letters); under lang="ja" the JP cut,
@@ -625,7 +627,7 @@ main blockquote {
 }
 
 /* Tablet and phone. */
-@media (max-width: 48rem) {
+@media screen and (max-width: 48rem) {
   .layout {
     padding: 1rem 0.5rem 3rem;
   }
@@ -645,7 +647,7 @@ main blockquote {
     margin: 0 auto 1rem;
   }
 }
-@media (max-width: 30rem) {
+@media screen and (max-width: 30rem) {
   /* No room in the bar beside the contents and theme buttons and the
      title: the language switch moves to the top of the contents drawer. */
   .bar .lang-switch {
@@ -681,7 +683,7 @@ main blockquote {
   }
 }
 
-@media (min-width: 60rem) {
+@media screen and (min-width: 60rem) {
   .bar,
   .toc-close {
     display: none;
@@ -726,7 +728,7 @@ main blockquote {
   }
 }
 
-@media (min-width: 87.5rem) {
+@media screen and (min-width: 87.5rem) {
   .has-toc.has-panel .layout {
     grid-template-columns: var(--toc) minmax(0, var(--text)) var(--panel);
     grid-template-areas: "toc main panel";
@@ -746,8 +748,26 @@ main blockquote {
   }
 }
 
-/* Paper and ink: light, without the decoration. */
+/* Paper keeps the screen's look in light, as violethpark/workspace
+   plan-page.css prints plan.html: the width steps above
+   are for screens only, so a sheet of any size gets the full-size text and
+   the photo beside the title. Only the bars, the contents, and the buttons
+   go. */
 @media print {
+  @page {
+    margin: 15mm 14mm 16mm;
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      color: var(--meta);
+      font: 0.5rem var(--sans);
+    }
+  }
+  /* The top and bottom @page margins. Chromium resolves vh in print
+     against the page area inside them, Firefox against the whole sheet:
+     a height in vh subtracts them to fit one sheet in both. */
+  :root {
+    --page-margins: 31mm;
+  }
   :root,
   :root[data-theme] {
     color-scheme: light;
@@ -755,34 +775,79 @@ main blockquote {
   body {
     background: none;
   }
-  /* As specific as the screen rules they undo. */
   .skip,
   .bar,
-  .has-toc .main-bar,
   .toc,
   .toc:popover-open,
-  .has-panel .panel,
   .section-toggle,
   .section-info,
   .lang-switch,
   .theme-toggle {
     display: none;
   }
-  .layout,
-  .has-toc .layout,
-  .has-toc.has-panel .layout {
+  .layout {
     display: block;
     padding: 0;
   }
+  /* White paper: the screen's tint would stop at the page margins. */
   main {
     padding: 0;
     border: none;
     box-shadow: none;
+    background: none;
   }
-  main h2::before,
-  main h3::before,
-  main blockquote::before,
-  main hr::after {
-    content: none;
+  main :is(h1, h2, h3, h4),
+  .section-head {
+    break-after: avoid;
+  }
+  main :is(pre, blockquote, img, tr) {
+    break-inside: avoid;
+  }
+  main :is(p, li) {
+    orphans: 3;
+    widows: 3;
+  }
+  /* Paper cannot scroll: wide code and tables wrap in the column. */
+  main pre {
+    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  main table {
+    display: table;
+    overflow: visible;
+  }
+  /* A long link, path, or word breaks anywhere rather than widening the
+     table past the sheet, which Firefox cuts off and Chromium shrinks the
+     whole page to fit. */
+  main :is(th, td) {
+    overflow-wrap: anywhere;
+  }
+  /* A column keeps room for a few letters, not one a line, in a table of
+     up to six columns: their 4em each stays inside the narrowest text
+     column (A4 portrait, 688px). A wider table only breaks anywhere. */
+  main table:not(:has(tr > :nth-child(7))) :is(th, td) {
+    min-width: 4em;
+  }
+  /* Kept when the print dialog drops backgrounds. */
+  main :is(th, code, pre, blockquote) {
+    print-color-adjust: exact;
+  }
+  /* The appendix pictures fit one sheet on any paper size, keeping their
+     ratio. In Chromium the margins add room for an h2 and an h3, so each
+     picture stays with its headings (Firefox does not keep headings with
+     what follows). The profile photo keeps its size. */
+  main p:has(> img:only-child) {
+    break-before: avoid;
+    break-inside: avoid;
+  }
+  main img:not([align]) {
+    width: auto;
+    max-height: calc(100vh - var(--page-margins) - 5rem);
+    object-fit: contain;
+  }
+  /* The closing rule alone would take a sheet of its own. */
+  main > hr:last-child {
+    display: none;
   }
 }
