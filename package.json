@@ -15,7 +15,7 @@
     "ruff": ".venv-fonts/bin/ruff check && .venv-fonts/bin/ruff format --check"
   },
   "devDependencies": {
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.6",
     "prettier": "3.10.0",
     "pyright": "1.1.414",
     "typescript": "7.0.2"

@@ -4,10 +4,10 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "description": "The Node.js types follow the workflows' node-version (24); raise both together by hand.",
+      "description": "The Node.js types follow the workflows' node-version (26); raise both together by hand.",
       "matchManagers": ["npm"],
       "matchDepNames": ["@types/node"],
-      "allowedVersions": "<25"
+      "allowedVersions": "<27"
     }
   ]
 }
