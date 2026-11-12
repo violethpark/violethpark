@@ -15,7 +15,7 @@ permissions:
 
 env:
   # renovate: datasource=python-version depName=python
-  PYTHON_VERSION: 3.14.10
+  PYTHON_VERSION: 3.15.2
 
 jobs:
   check:
@@ -77,9 +77,9 @@ jobs:
         run: npm run format:check
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
-          version: 0.13.6
+          version: 0.13.7
 
       # Pyright reads fontTools from this venv (pyrightconfig.json).
       - name: Install fontTools and Ruff
