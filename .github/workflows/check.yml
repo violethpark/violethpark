@@ -21,12 +21,13 @@ jobs:
   check:
     runs-on: ubuntu-26.04
     timeout-minutes: 15
-    container: debian:13.7-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31
+    container: debian:13.7-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2
     steps:
       - name: Debian packages
         run: |
+          # The official Node 26 binary links libatomic.so.1, which debian:*-slim leaves out.
           apt-get update
-          apt-get install -y --no-install-recommends ca-certificates git
+          apt-get install -y --no-install-recommends ca-certificates git libatomic1
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -52,7 +53,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
-          node-version: 24.22.1
+          node-version: 26.13.1
           cache: npm
           cache-dependency-path: |
             package-lock.json
